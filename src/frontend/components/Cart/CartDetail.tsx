@@ -52,6 +52,8 @@ const CartDetail = () => {
           creditCardExpirationYear,
           creditCardNumber,
         },
+        paymentMethod: undefined,
+        deliveryMethod: 0,
       });
 
       push({
