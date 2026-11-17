@@ -14,7 +14,13 @@ const quote = (deliveryMethod: string, country: string) =>
       qs: {
         itemList: JSON.stringify([{ productId: '0PUK6V6EV0', quantity: 1 }]),
         currencyCode: 'USD',
-        address: JSON.stringify({ country }),
+        address: JSON.stringify({
+          streetAddress: '1600 Amphitheatre Parkway',
+          city: 'Mountain View',
+          state: 'CA',
+          country,
+          zipCode: '94043',
+        }),
         deliveryMethod,
       },
     })
