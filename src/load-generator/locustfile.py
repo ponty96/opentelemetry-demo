@@ -41,6 +41,8 @@ from openfeature import api
 from openfeature.contrib.provider.ofrep import OFREPProvider
 from openfeature.contrib.hook.opentelemetry import TracingHook
 
+from segments import SegmentHook, checkout_request, persona_baggage
+
 from playwright.async_api import Route, Request
 
 metric_exporter = OTLPMetricExporter(insecure=True)
@@ -94,7 +96,7 @@ logging.info("Instrumentation complete - logs will now include trace context")
 # Initialize Flagd provider
 base_url = f"http://{os.environ.get('FLAGD_HOST', 'localhost')}:{os.environ.get('FLAGD_OFREP_PORT', 8016)}"
 api.set_provider(OFREPProvider(base_url=base_url))
-api.add_hooks([TracingHook()])
+api.add_hooks([TracingHook(), SegmentHook()])
 
 def get_flagd_value(FlagName):
     # Initialize OpenFeature
@@ -206,11 +208,9 @@ class WebsiteUser(HttpUser):
     @task(1)
     def checkout(self):
         user = str(uuid.uuid1())
-        with self.tracer.start_as_current_span("user_checkout_single", context=context.get_current(), attributes={"user.id": user}):
+        with self.tracer.start_as_current_span("user_checkout_single", context=context.get_current(), attributes={"user.id": self.persona["id"]}):
             self.add_to_cart(user=user)
-            checkout_person = random.choice(people)
-            checkout_person["userId"] = user
-            self.client.post("/api/checkout", json=checkout_person)
+            self.client.post("/api/checkout", json=checkout_request(self.persona, user))
             logging.info(f"Checkout completed for user {user}")
 
     @task(1)
@@ -218,12 +218,10 @@ class WebsiteUser(HttpUser):
         user = str(uuid.uuid1())
         item_count = random.choice([2, 3, 4])
         with self.tracer.start_as_current_span("user_checkout_multi", context=context.get_current(),
-                                            attributes={"user.id": user, "demo.cart.items.count": item_count}):
+                                            attributes={"user.id": self.persona["id"], "demo.cart.items.count": item_count}):
             for i in range(item_count):
                 self.add_to_cart(user=user)
-            checkout_person = random.choice(people)
-            checkout_person["userId"] = user
-            self.client.post("/api/checkout", json=checkout_person)
+            self.client.post("/api/checkout", json=checkout_request(self.persona, user))
             logging.info(f"Multi-item checkout completed for user {user}")
 
     @task(5)
@@ -253,8 +251,11 @@ class WebsiteUser(HttpUser):
         # If this were attached *inside* start_as_current_span(...)'s `with` block,
         # that block's own exit would detach past this manual attach and silently
         # discard the baggage for the rest of the user's session.
+        self.persona = random.choice(people)
         ctx = baggage.set_baggage("session.id", session_id)
         ctx = baggage.set_baggage("synthetic_request", "true", context=ctx)
+        for key, value in persona_baggage(self.persona).items():
+            ctx = baggage.set_baggage(key, value, context=ctx)
         context.attach(ctx)
         with self.tracer.start_as_current_span("user_session_start", context=context.get_current()):
             self.index()

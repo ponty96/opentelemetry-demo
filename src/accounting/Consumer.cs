@@ -95,7 +95,12 @@ internal class Consumer : BackgroundService
             using var dbContext = new DBContext();
             var orderEntity = new OrderEntity
             {
-                Id = order.OrderId
+                Id = order.OrderId,
+                PaymentMethod = order.PaymentMethod == PaymentMethodType.Unspecified ? "card" : order.PaymentMethod.ToSnakeCase(),
+                CardNetwork = string.IsNullOrEmpty(order.CardNetwork) ? null : order.CardNetwork,
+                DeliveryMethod = order.DeliveryMethod == DeliveryMethod.Unspecified ? "standard" : order.DeliveryMethod.ToSnakeCase(),
+                Carrier = string.IsNullOrEmpty(order.Carrier) ? null : order.Carrier,
+                Country = order.ShippingAddress.Country
             };
             dbContext.Add(orderEntity);
             foreach (var item in order.Items)

@@ -22,6 +22,7 @@ COPY ./src/email/views/ views/
 COPY ./src/email/Gemfile Gemfile
 COPY ./src/email/Gemfile.lock Gemfile.lock
 COPY ./src/email/email_server.rb email_server.rb
+COPY ./src/email/segment_hook.rb segment_hook.rb
 
 ARG EMAIL_PORT=6060
 EXPOSE ${EMAIL_PORT}

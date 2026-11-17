@@ -16,6 +16,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using cart.featureflags;
 using OpenFeature;
 using OpenFeature.Hooks;
 using OpenFeature.Providers.Flagd;
@@ -47,7 +48,8 @@ builder.Services.AddOpenFeature(openFeatureBuilder =>
     openFeatureBuilder
         .AddProvider(_ => new FlagdProvider())
         .AddHook<MetricsHook>()
-        .AddHook<TraceEnricherHook>();
+        .AddHook<TraceEnricherHook>()
+        .AddHook<SegmentHook>();
 });
 
 builder.Services.AddSingleton(x =>

@@ -3,11 +3,15 @@
 
 use actix_web::{post, web, HttpResponse, Responder};
 use open_feature::provider::FeatureProvider;
-use open_feature::EvaluationContext;
+use opentelemetry::trace::TraceContextExt;
+use opentelemetry::{Context, KeyValue};
 use tracing::{info, warn};
 
 mod quote;
 use quote::create_quote_from_count;
+
+mod segments;
+use segments::{carrier, delivery_method, evaluation_context};
 
 mod tracking;
 use tracking::create_tracking_id;
@@ -20,8 +24,17 @@ const NANOS_MULTIPLE: u32 = 10000000u32;
 #[post("/get-quote")]
 pub async fn get_quote(req: web::Json<GetQuoteRequest>) -> impl Responder {
     let itemct: u32 = req.items.iter().map(|item| item.quantity as u32).sum();
+    let method = delivery_method(req.delivery_method.as_deref());
+    let country = req
+        .address
+        .as_ref()
+        .map(|addr| addr.country.as_str())
+        .unwrap_or("");
+    Context::current()
+        .span()
+        .set_attribute(KeyValue::new("demo.shipping.delivery_method", method));
 
-    let quote = match create_quote_from_count(itemct).await {
+    let quote = match create_quote_from_count(itemct, method, country).await {
         Ok(q) => q,
         Err(e) => {
             return HttpResponse::InternalServerError().body(format!("Failed to get quote: {}", e));
@@ -62,9 +75,23 @@ pub async fn ship_order(
         })
         .unwrap_or(false);
 
+    let method = delivery_method(req.delivery_method.as_deref());
+    let country = req
+        .address
+        .as_ref()
+        .map(|addr| addr.country.as_str())
+        .unwrap_or("");
+    let carrier = carrier(method, country);
+    let cx = Context::current();
+    cx.span().set_attributes([
+        KeyValue::new("demo.shipping.delivery_method", method),
+        KeyValue::new("demo.shipping.carrier", carrier),
+    ]);
+    let eval_ctx = evaluation_context(&cx);
+
     let slowdown_secs = if is_outside_us {
         flag_provider
-            .resolve_int_value("intlShippingSlowdown", &EvaluationContext::default())
+            .resolve_int_value("intlShippingSlowdown", &eval_ctx)
             .await
             .map(|res| {
                 info!(
@@ -98,7 +125,10 @@ pub async fn ship_order(
         tracking_id = tid.as_str(),
         "Tracking ID Created"
     );
-    HttpResponse::Ok().json(ShipOrderResponse { tracking_id: tid })
+    HttpResponse::Ok().json(ShipOrderResponse {
+        tracking_id: tid,
+        carrier: carrier.to_string(),
+    })
 }
 
 #[cfg(test)]
@@ -127,6 +157,7 @@ mod tests {
             .set_json(&ShipOrderRequest {
                 address,
                 items: vec![],
+                delivery_method: Some("express".into()),
             })
             .to_request();
         let resp = test::call_service(&app, req).await;
@@ -142,6 +173,14 @@ mod tests {
             country: country.into(),
             zip_code: "00000".into(),
         }
+    }
+
+    #[actix_web::test]
+    async fn test_ship_order_returns_carrier() {
+        let order = call_ship_order(Some(make_address("DE")), mock_provider(0)).await;
+        assert_eq!(order.carrier, "dhl");
+        let order = call_ship_order(Some(make_address("US")), mock_provider(0)).await;
+        assert_eq!(order.carrier, "fedex");
     }
 
     #[actix_web::test]

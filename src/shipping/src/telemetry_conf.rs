@@ -16,7 +16,9 @@ use opentelemetry_resource_detectors::{
     HostResourceDetector, OsResourceDetector, ProcessResourceDetector,
 };
 use opentelemetry_sdk::{
-    propagation::TraceContextPropagator, resource::ResourceDetector, Resource,
+    propagation::{BaggagePropagator, TraceContextPropagator},
+    resource::ResourceDetector,
+    Resource,
 };
 use std::sync::OnceLock;
 
@@ -37,7 +39,12 @@ fn get_resource() -> Resource {
 }
 
 fn init_tracer_provider() -> SdkTracerProvider {
-    global::set_text_map_propagator(TraceContextPropagator::new());
+    global::set_text_map_propagator(opentelemetry::propagation::TextMapCompositePropagator::new(
+        vec![
+            Box::new(TraceContextPropagator::new()),
+            Box::new(BaggagePropagator::new()),
+        ],
+    ));
 
     let tracer_provider = SdkTracerProvider::builder()
         .with_resource(get_resource())

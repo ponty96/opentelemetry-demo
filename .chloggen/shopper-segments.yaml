@@ -1,0 +1,11 @@
+change_type: enhancement
+
+component: checkout
+
+note: Add shopper segments (tier, country, region, platform, payment method, card network, wallet provider, delivery method, carrier) that travel as baggage and are copied into every OpenFeature evaluation context, so existing flags such as `paymentFailure` can target a segment.
+
+issues: []
+
+subtext: |-
+  Checkout gains payment method (card, Apple Pay, Google Pay, PayPal, crypto, BNPL) and delivery method selectors.
+  The load generator now uses 200 seeded personas from `generate_personas.py`.

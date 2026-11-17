@@ -43,3 +43,15 @@ attributes:
     stability: stable
     note: Unique identifier for the payment transaction
     examples: ["txn-abc123", "PAY-456789"]
+  - key: demo.payment.method
+    type: string
+    brief: Payment method chosen at checkout
+    stability: development
+    note: Propagated as baggage from the edge and set on payment spans.
+    examples: ["card", "apple_pay", "google_pay", "paypal", "crypto", "bnpl"]
+  - key: demo.payment.wallet_provider
+    type: string
+    brief: Provider behind a non-card payment method
+    stability: development
+    note: Derived from the payment method and propagated as baggage.
+    examples: ["apple", "google", "paypal", "coinbase", "klarna"]

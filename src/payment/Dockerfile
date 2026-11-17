@@ -33,6 +33,7 @@ COPY ./pb/demo.proto demo.proto
 COPY ./src/payment/charge.js charge.js
 COPY ./src/payment/index.js index.js
 COPY ./src/payment/logger.js logger.js
+COPY ./src/payment/segments.js segments.js
 
 ARG PAYMENT_PORT=50051
 EXPOSE ${PAYMENT_PORT}

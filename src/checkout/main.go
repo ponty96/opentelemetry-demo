@@ -59,6 +59,7 @@ import (
 	pb "github.com/open-telemetry/opentelemetry-demo/src/checkout/genproto/oteldemo"
 	"github.com/open-telemetry/opentelemetry-demo/src/checkout/kafka"
 	"github.com/open-telemetry/opentelemetry-demo/src/checkout/money"
+	"github.com/open-telemetry/opentelemetry-demo/src/checkout/segments"
 )
 
 //go:generate go install google.golang.org/protobuf/cmd/protoc-gen-go
@@ -206,7 +207,7 @@ func main() {
 		logger.Error("Failed to set flagd as the provider", slog.Any("error", err))
 	}
 	defer openfeature.Shutdown()
-	openfeature.AddHooks(otelhooks.NewTracesHook())
+	openfeature.AddHooks(otelhooks.NewTracesHook(), segments.Hook{})
 
 	tracer = tp.Tracer("checkout")
 
@@ -318,6 +319,20 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		)
 	}
 
+	paymentMethod := segments.NormalizePaymentMethod(req.GetPaymentMethod().GetType())
+	deliveryMethod := segments.NormalizeDeliveryMethod(req.GetDeliveryMethod())
+	cardNetwork := ""
+	if paymentMethod == pb.PaymentMethodType_PAYMENT_METHOD_TYPE_CARD {
+		cardNetwork = segments.CardNetwork(req.GetCreditCard().GetCreditCardNumber())
+	}
+	span.SetAttributes(
+		attribute.String("demo.payment.method", segments.PaymentMethodName(paymentMethod)),
+		attribute.String("demo.shipping.delivery_method", segments.DeliveryMethodName(deliveryMethod)),
+	)
+	if cardNetwork != "" {
+		span.SetAttributes(attribute.String("demo.payment.card_type", cardNetwork))
+	}
+
 	if baggage.FromContext(ctx).Member("synthetic_request").Value() == "true" {
 		span.SetAttributes(attribute.String("user_agent.synthetic.type", "test"))
 	}
@@ -341,7 +356,7 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		return nil, status.Errorf(codes.Internal, "failed to generate order uuid")
 	}
 
-	prep, err := cs.prepareOrderItemsAndShippingQuoteFromCart(ctx, req.UserId, req.UserCurrency, req.Address)
+	prep, err := cs.prepareOrderItemsAndShippingQuoteFromCart(ctx, req.UserId, req.UserCurrency, req.Address, deliveryMethod)
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
@@ -358,7 +373,7 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		total = money.Must(money.Sum(total, multPrice))
 	}
 
-	txID, err := cs.chargeCard(ctx, total, req.CreditCard)
+	txID, err := cs.chargeCard(ctx, total, req.CreditCard, req.GetPaymentMethod())
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to charge card: %+v", err)
 	}
@@ -371,12 +386,15 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		slog.String("transaction_id", txID),
 	)
 
-	shippingTrackingID, err := cs.shipOrder(ctx, req.Address, prep.cartItems)
+	shippingTrackingID, carrier, err := cs.shipOrder(ctx, req.Address, prep.cartItems, deliveryMethod)
 	if err != nil {
 		return nil, status.Errorf(codes.Unavailable, "shipping error: %+v", err)
 	}
 	shippingTrackingAttribute := attribute.String("demo.shipping.tracking.id", shippingTrackingID)
 	span.AddEvent("shipped", trace.WithAttributes(shippingTrackingAttribute))
+	if carrier != "" {
+		span.SetAttributes(attribute.String("demo.shipping.carrier", carrier))
+	}
 
 	_ = cs.emptyUserCart(ctx, req.UserId)
 
@@ -386,6 +404,10 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		ShippingCost:       prep.shippingCostLocalized,
 		ShippingAddress:    req.Address,
 		Items:              prep.orderItems,
+		PaymentMethod:      paymentMethod,
+		DeliveryMethod:     deliveryMethod,
+		Carrier:            carrier,
+		CardNetwork:        cardNetwork,
 	}
 
 	shippingCostFloat, _ := strconv.ParseFloat(fmt.Sprintf("%d.%02d", prep.shippingCostLocalized.GetUnits(), prep.shippingCostLocalized.GetNanos()/10000000), 64)
@@ -430,7 +452,7 @@ type orderPrep struct {
 	shippingCostLocalized *pb.Money
 }
 
-func (cs *checkout) prepareOrderItemsAndShippingQuoteFromCart(ctx context.Context, userID, userCurrency string, address *pb.Address) (orderPrep, error) {
+func (cs *checkout) prepareOrderItemsAndShippingQuoteFromCart(ctx context.Context, userID, userCurrency string, address *pb.Address, deliveryMethod pb.DeliveryMethod) (orderPrep, error) {
 	ctx, span := tracer.Start(ctx, "prepareOrderItemsAndShippingQuoteFromCart")
 	defer span.End()
 
@@ -443,7 +465,7 @@ func (cs *checkout) prepareOrderItemsAndShippingQuoteFromCart(ctx context.Contex
 	if err != nil {
 		return out, fmt.Errorf("failed to prepare order: %+v", err)
 	}
-	shippingUSD, err := cs.quoteShipping(ctx, address, cartItems)
+	shippingUSD, err := cs.quoteShipping(ctx, address, cartItems, deliveryMethod)
 	if err != nil {
 		return out, fmt.Errorf("shipping quote failure: %+v", err)
 	}
@@ -482,10 +504,11 @@ func mustCreateClient(svcAddr string) *grpc.ClientConn {
 	return c
 }
 
-func (cs *checkout) quoteShipping(ctx context.Context, address *pb.Address, items []*pb.CartItem) (*pb.Money, error) {
+func (cs *checkout) quoteShipping(ctx context.Context, address *pb.Address, items []*pb.CartItem, deliveryMethod pb.DeliveryMethod) (*pb.Money, error) {
 	quotePayload, err := json.Marshal(map[string]interface{}{
-		"address": address,
-		"items":   items,
+		"address":         address,
+		"items":           items,
+		"delivery_method": segments.DeliveryMethodName(deliveryMethod),
 	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal ship order request: %+v", err)
@@ -570,7 +593,7 @@ func (cs *checkout) convertCurrency(ctx context.Context, from *pb.Money, toCurre
 	return result, err
 }
 
-func (cs *checkout) chargeCard(ctx context.Context, amount *pb.Money, paymentInfo *pb.CreditCardInfo) (string, error) {
+func (cs *checkout) chargeCard(ctx context.Context, amount *pb.Money, paymentInfo *pb.CreditCardInfo, paymentMethod *pb.PaymentMethod) (string, error) {
 	paymentService := cs.paymentSvcClient
 	if flags.PaymentUnreachable.Value(ctx, openfeature.EvaluationContext{}) {
 		badAddress := "badAddress:50051"
@@ -580,8 +603,9 @@ func (cs *checkout) chargeCard(ctx context.Context, amount *pb.Money, paymentInf
 	}
 
 	paymentResp, err := paymentService.Charge(ctx, &pb.ChargeRequest{
-		Amount:     amount,
-		CreditCard: paymentInfo,
+		Amount:        amount,
+		CreditCard:    paymentInfo,
+		PaymentMethod: paymentMethod,
 	})
 	if err != nil {
 		return "", fmt.Errorf("could not charge the card: %+v", err)
@@ -619,46 +643,48 @@ func (cs *checkout) sendOrderConfirmation(ctx context.Context, email string, ord
 	return err
 }
 
-func (cs *checkout) shipOrder(ctx context.Context, address *pb.Address, items []*pb.CartItem) (string, error) {
+func (cs *checkout) shipOrder(ctx context.Context, address *pb.Address, items []*pb.CartItem, deliveryMethod pb.DeliveryMethod) (string, string, error) {
 	shipPayload, err := json.Marshal(map[string]interface{}{
-		"address": address,
-		"items":   items,
+		"address":         address,
+		"items":           items,
+		"delivery_method": segments.DeliveryMethodName(deliveryMethod),
 	})
 	if err != nil {
-		return "", fmt.Errorf("failed to marshal ship order request: %+v", err)
+		return "", "", fmt.Errorf("failed to marshal ship order request: %+v", err)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", cs.shippingSvcAddr+"/ship-order", bytes.NewBuffer(shipPayload))
 	if err != nil {
-		return "", fmt.Errorf("failed to create request: %+v", err)
+		return "", "", fmt.Errorf("failed to create request: %+v", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
 	resp, err := cs.httpClient.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("failed POST to shipping service: %+v", err)
+		return "", "", fmt.Errorf("failed POST to shipping service: %+v", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("failed POST to shipping service: expected 200, got %d", resp.StatusCode)
+		return "", "", fmt.Errorf("failed POST to shipping service: expected 200, got %d", resp.StatusCode)
 	}
 
 	trackingRespBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return "", fmt.Errorf("failed to read ship order response: %+v", err)
+		return "", "", fmt.Errorf("failed to read ship order response: %+v", err)
 	}
 
 	var shipResp struct {
 		TrackingID string `json:"tracking_id"`
+		Carrier    string `json:"carrier"`
 	}
 	if err := json.Unmarshal(trackingRespBytes, &shipResp); err != nil {
-		return "", fmt.Errorf("failed to unmarshal ship order response: %+v", err)
+		return "", "", fmt.Errorf("failed to unmarshal ship order response: %+v", err)
 	}
 	if shipResp.TrackingID == "" {
-		return "", fmt.Errorf("ship order response missing tracking_id field")
+		return "", "", fmt.Errorf("ship order response missing tracking_id field")
 	}
 
-	return shipResp.TrackingID, nil
+	return shipResp.TrackingID, shipResp.Carrier, nil
 }
 
 func (cs *checkout) sendToPostProcessor(ctx context.Context, result *pb.OrderResult) {

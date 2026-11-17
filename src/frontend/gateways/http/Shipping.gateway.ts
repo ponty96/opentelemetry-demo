@@ -22,10 +22,11 @@ const transformCartItems = (items: CartItem[]) =>
   }));
 
 const ShippingGateway = () => ({
-  async getShippingCost(itemList: CartItem[], address: Address): Promise<GetQuoteResponse> {
+  async getShippingCost(itemList: CartItem[], address: Address, deliveryMethod = 'standard'): Promise<GetQuoteResponse> {
     const requestBody = {
       items: transformCartItems(itemList),
       address: transformAddress(address),
+      delivery_method: deliveryMethod,
     };
 
     const response = await fetch(`${SHIPPING_ADDR}/get-quote`, {

@@ -15,9 +15,21 @@ attributes:
     stability: stable
     note: The currency code preferred by the user for pricing and transactions
     examples: ["USD", "EUR", "GBP"]
-  - key: demo.user_context.loyalty_level
+  - key: demo.user_context.tier
     type: string
-    brief: Customer loyalty level
-    stability: stable
-    note: The loyalty tier or level of the customer making the payment. This can be used to track payment patterns by customer segment.
-    examples: ["gold", "platinum", "silver", "bronze"]
+    brief: Shopper account tier
+    stability: development
+    note: Set once at the edge and propagated as baggage so flags and dashboards can segment by tier.
+    examples: ["standard", "plus", "business"]
+  - key: demo.user_context.country
+    type: string
+    brief: Shopper country
+    stability: development
+    note: ISO 3166-1 alpha-2 country of the shipping address, propagated as baggage.
+    examples: ["US", "DE", "NG"]
+  - key: demo.user_context.region
+    type: string
+    brief: Shopper region
+    stability: development
+    note: Region derived from the shopper country, propagated as baggage.
+    examples: ["na", "eu", "africa", "latam", "apac"]

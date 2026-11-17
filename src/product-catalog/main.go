@@ -48,6 +48,7 @@ import (
 
 	"github.com/XSAM/otelsql"
 	flags "github.com/opentelemetry/opentelemetry-demo/src/product-catalog/flags"
+	"github.com/opentelemetry/opentelemetry-demo/src/product-catalog/segments"
 )
 
 type productCatalog struct {
@@ -149,7 +150,7 @@ func main() {
 		}
 	}()
 
-	openfeature.AddHooks(otelhooks.NewTracesHook())
+	openfeature.AddHooks(otelhooks.NewTracesHook(), segments.Hook{})
 	provider, err := flagd.NewProvider()
 	if err != nil {
 		logger.Error("Error creating flagd provider", slog.Any("error", err))

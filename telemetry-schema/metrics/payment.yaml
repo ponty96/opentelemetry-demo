@@ -22,3 +22,5 @@ metrics:
     attributes:
       - ref: demo.payment.currency
         requirement_level: required
+      - ref: demo.payment.method
+        requirement_level: recommended

@@ -1,155 +1,4130 @@
 [
-    {
-        "email": "larry_sergei@example.com",
-        "address": {
-            "streetAddress": "1600 Amphitheatre Parkway",
-            "zipCode": "94043",
-            "city": "Mountain View",
-            "state": "CA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4432-8015-6152-0454",
-            "creditCardExpirationMonth": 1,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 672
-        }
+  {
+    "id": "bc8960a9-23b8-41e9-b924-56de3eb13b90",
+    "email": "shopper000@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
     },
-    {
-        "email": "bill@example.com",
-        "address": {
-            "streetAddress": "One Microsoft Way",
-            "zipCode": "98052",
-            "city": "Redmond",
-            "state": "WA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4532-4211-7434-1278",
-            "creditCardExpirationMonth": 2,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 114
-        }
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "9a1de644-815e-46d1-bb8f-aa1837f8a88b",
+    "email": "shopper001@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
     },
-    {
-        "email": "steve@example.com",
-        "address": {
-            "streetAddress": "One Apple Park Way",
-            "zipCode": "95014",
-            "city": "Cupertino",
-            "state": "CA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4532-6178-2799-1951",
-            "creditCardExpirationMonth": 3,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 239
-        }
-    },
-    {
-        "email": "mark@example.com",
-        "address": {
-            "streetAddress": "1 Hacker Way",
-            "zipCode": "94025",
-            "city": "Menlo Park",
-            "state": "CA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4539-1103-5661-7083",
-            "creditCardExpirationMonth": 4,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 784
-        }
-    },
-    {
-        "email": "jeff@example.com",
-        "address": {
-            "streetAddress": "410 Terry Ave N",
-            "zipCode": "98109",
-            "city": "Seattle",
-            "state": "WA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4916-0816-6217-7968",
-            "creditCardExpirationMonth": 5,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 397
-        }
-    },
-    {
-        "email": "reed@example.com",
-        "address": {
-            "streetAddress": "100 Winchester Circle",
-            "zipCode": "95032",
-            "city": "Los Gatos",
-            "state": "CA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4929-5431-0337-5647",
-            "creditCardExpirationMonth": 6,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 793
-        }
-    },
-    {
-        "email": "tobias@example.com",
-        "address": {
-            "streetAddress": "150 Elgin St",
-            "zipCode": "K2P1L4",
-            "city": "Ottawa",
-            "state": "ON",
-            "country": "Canada"
-        },
-        "userCurrency": "CAD",
-        "creditCard": {
-            "creditCardNumber": "4763-1844-9699-8031",
-            "creditCardExpirationMonth": 7,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 488
-        }
-    },
-    {
-        "email": "jack@example.com",
-        "address": {
-            "streetAddress": "1355 Market St",
-            "zipCode": "94103",
-            "city": "San Francisco",
-            "state": "CA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4929-6495-8333-3657",
-            "creditCardExpirationMonth": 8,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 159
-        }
-    },
-    {
-        "email": "moore@example.com",
-        "address": {
-            "streetAddress": "2200 Mission College Blvd",
-            "zipCode": "95054",
-            "city": "Santa Clara",
-            "state": "CA",
-            "country": "United States"
-        },
-        "userCurrency": "USD",
-        "creditCard": {
-            "creditCardNumber": "4485-4803-8707-3547",
-            "creditCardExpirationMonth": 9,
-            "creditCardExpirationYear": 2039,
-            "creditCardCvv": 682
-        }
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4379-4026-5423-5111",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 467
     }
+  },
+  {
+    "id": "1ff49b78-8946-4e85-b59c-de66bacfb3d0",
+    "email": "shopper002@example.com",
+    "tier": "business",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "a9488d99-0bbb-4599-91ce-5dd2b45ed1f0",
+    "email": "shopper003@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4164-7525-5341-9284",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 267
+    }
+  },
+  {
+    "id": "3838b326-8e94-4239-b02b-61c4a3d70628",
+    "email": "shopper004@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "3602f8ac-10f1-4c81-848a-aa9e66b2bc5b",
+    "email": "shopper005@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "24933b83-7577-40a9-a491-f0b2ea1fca65",
+    "email": "shopper006@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4969-6532-8710-1221",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 710
+    }
+  },
+  {
+    "id": "f89897b9-405c-4cec-8774-09a977d21e02",
+    "email": "shopper007@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4845-1462-7048-2815",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 961
+    }
+  },
+  {
+    "id": "f4188f3f-8a14-4e62-a95b-4715c333e861",
+    "email": "shopper008@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4015-4303-9117-1828",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 662
+    }
+  },
+  {
+    "id": "edcd465e-3638-4821-b6e0-7cc06c52c49f",
+    "email": "shopper009@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "7394988f-847f-49b4-a64d-1bcb702753a1",
+    "email": "shopper010@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "a18ff6b6-b535-406e-922c-9a5601d74256",
+    "email": "shopper011@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4834-7382-9973-7634",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 774
+    }
+  },
+  {
+    "id": "ac619e63-0dde-49a6-baa4-b71add2467ac",
+    "email": "shopper012@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5133-3872-6247-3176",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 151
+    }
+  },
+  {
+    "id": "3c835dc0-d944-4fa5-80e9-ab30ed2662e9",
+    "email": "shopper013@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "43e458fc-63f2-4e24-bc3d-3348008d4127",
+    "email": "shopper014@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5572-3430-9805-0090",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 973
+    }
+  },
+  {
+    "id": "118a9d29-2f92-4996-99f1-95d014822f53",
+    "email": "shopper015@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "14fcdd54-9e8f-4965-8a2c-827e98326856",
+    "email": "shopper016@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "373534624751076",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 202
+    }
+  },
+  {
+    "id": "e1805081-5958-4499-aeea-163e21e8ac68",
+    "email": "shopper017@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4849-8084-1241-1822",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 719
+    }
+  },
+  {
+    "id": "81627cf1-4394-42e6-9a58-7e8aa25d6b29",
+    "email": "shopper018@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4640-0524-2786-8012",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 658
+    }
+  },
+  {
+    "id": "0ab54bde-20a0-4502-ae06-809725e97977",
+    "email": "shopper019@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "375331586923225",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 283
+    }
+  },
+  {
+    "id": "dd334cc7-ab7f-489a-8d5f-4822696608aa",
+    "email": "shopper020@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Plot 1 Shehu Shagari Way",
+      "zipCode": "900211",
+      "city": "Abuja",
+      "state": "FC",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "33173470-38f1-4a81-b87f-2425dbccc477",
+    "email": "shopper021@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "5408f9ac-6601-4dd0-b170-f437a8f7ef5a",
+    "email": "shopper022@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4868-5014-2940-1961",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 546
+    }
+  },
+  {
+    "id": "0b5cea6a-4135-4e8c-b0a9-00ad939b462d",
+    "email": "shopper023@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4356-1595-1484-6563",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 667
+    }
+  },
+  {
+    "id": "e71e43a6-bf85-4f0e-ad64-b56c610faa3f",
+    "email": "shopper024@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "9b4e2c24-9479-41e6-8927-7d9b6e0d2648",
+    "email": "shopper025@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4721-4895-1343-3206",
+      "creditCardExpirationMonth": 1,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 586
+    }
+  },
+  {
+    "id": "31c681ec-935f-4b0a-a138-4ddce2d9de5d",
+    "email": "shopper026@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4016-3287-0831-7275",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 672
+    }
+  },
+  {
+    "id": "6d3ee1dc-8139-4443-a45b-712eb8225688",
+    "email": "shopper027@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "same_day"
+  },
+  {
+    "id": "a33dc7af-d701-410d-bf4b-1a70c074718e",
+    "email": "shopper028@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Plot 1 Shehu Shagari Way",
+      "zipCode": "900211",
+      "city": "Abuja",
+      "state": "FC",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4714-3455-8122-3623",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 165
+    }
+  },
+  {
+    "id": "d5385b0e-34f3-493c-8ff0-a55c6a702e2f",
+    "email": "shopper029@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5567-0546-6889-3739",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 597
+    }
+  },
+  {
+    "id": "2a405f12-b963-437f-a781-4c1fcc530e36",
+    "email": "shopper030@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "pickup"
+  },
+  {
+    "id": "a48b3dbe-157d-44a1-86f0-28ffa9ba5a27",
+    "email": "shopper031@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4537-5564-6417-0807",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 765
+    }
+  },
+  {
+    "id": "33094d35-3f4d-4561-b319-c12507f194f9",
+    "email": "shopper032@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4193-7452-9912-4197",
+      "creditCardExpirationMonth": 1,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 689
+    }
+  },
+  {
+    "id": "9793b9b4-1374-4146-b2c5-bd89b70b3420",
+    "email": "shopper033@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5519-0586-5185-0670",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 470
+    }
+  },
+  {
+    "id": "859131d2-bbda-4242-ad17-4fc96f7c15ea",
+    "email": "shopper034@example.com",
+    "tier": "business",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "44b591f7-97ac-4aa8-bb24-88a3d36357b6",
+    "email": "shopper035@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4737-9965-0752-7357",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 386
+    }
+  },
+  {
+    "id": "15eabb27-30e9-42f2-b2b4-3abf8441aefd",
+    "email": "shopper036@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "2-1 Umeda",
+      "zipCode": "530-0001",
+      "city": "Osaka",
+      "state": "Osaka",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4777-0143-6349-5783",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 535
+    }
+  },
+  {
+    "id": "405bfdc9-4e7e-4827-855a-c7627428a656",
+    "email": "shopper037@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5233-7498-9413-4352",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 114
+    }
+  },
+  {
+    "id": "4ac9778d-8da8-4ee4-8df5-6ac6f96b648a",
+    "email": "shopper038@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4094-7775-2047-1162",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 690
+    }
+  },
+  {
+    "id": "4dc82a1e-f2f9-45fa-9016-4161cfa701cd",
+    "email": "shopper039@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4993-8677-4964-9904",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 881
+    }
+  },
+  {
+    "id": "2c7f0b79-3d67-4de9-a834-e4c014c8b3b4",
+    "email": "shopper040@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5440-3447-1349-3616",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 763
+    }
+  },
+  {
+    "id": "cae9b4a7-2a79-4a68-8f44-704f1247ea4e",
+    "email": "shopper041@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "f1533ae8-670a-4c5c-b321-bf214dd8eb85",
+    "email": "shopper042@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5459-4013-9904-9027",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 767
+    }
+  },
+  {
+    "id": "d0725b5c-a281-4044-af96-288295d82980",
+    "email": "shopper043@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4125-6746-8071-5459",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 985
+    }
+  },
+  {
+    "id": "0de051a6-69ca-47d2-b644-14fd8ae769ed",
+    "email": "shopper044@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "49bc473f-ed7b-4656-a18a-15368c99a894",
+    "email": "shopper045@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "379324808613175",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 610
+    }
+  },
+  {
+    "id": "7b85179a-d5b0-47e0-aa5d-932b45ff2c83",
+    "email": "shopper046@example.com",
+    "tier": "business",
+    "platform": "web",
+    "address": {
+      "streetAddress": "2-1 Umeda",
+      "zipCode": "530-0001",
+      "city": "Osaka",
+      "state": "Osaka",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4982-1465-8404-4999",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 986
+    }
+  },
+  {
+    "id": "8b1e3b9d-c34b-4fbb-8d4a-75b8551ac8ea",
+    "email": "shopper047@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "373963605766276",
+      "creditCardExpirationMonth": 1,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 614
+    }
+  },
+  {
+    "id": "1986b4b2-70b7-4868-9854-80f0dfcaf0b7",
+    "email": "shopper048@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "56abf2f1-43d8-4870-b81d-baa1c8120a8e",
+    "email": "shopper049@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4865-7809-1343-1618",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 554
+    }
+  },
+  {
+    "id": "0e5dd462-cbd0-4ef2-930a-37df0bc61066",
+    "email": "shopper050@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "61ee6c5b-deef-480f-9c07-a75114374509",
+    "email": "shopper051@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4747-4074-8217-5947",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 806
+    }
+  },
+  {
+    "id": "1b4da0fe-7bb3-4605-9a74-3152627b41a1",
+    "email": "shopper052@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "374064090974399",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 751
+    }
+  },
+  {
+    "id": "ae4c84ff-a8c0-4f05-8478-f6f1b88ec318",
+    "email": "shopper053@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "same_day"
+  },
+  {
+    "id": "bb7bee03-5d67-4bb1-945e-f2e4088a93ec",
+    "email": "shopper054@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "5da8d6d2-f8b3-4a8b-a05f-b8bc8a16a06c",
+    "email": "shopper055@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4745-1712-3685-1607",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 226
+    }
+  },
+  {
+    "id": "5f18e583-f0b6-483f-a377-f6f1d289f0ab",
+    "email": "shopper056@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "378593174612000",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 218
+    }
+  },
+  {
+    "id": "f30a9e32-aba4-4c03-9efa-9c5b7421ff46",
+    "email": "shopper057@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5261-7964-0537-7355",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 657
+    }
+  },
+  {
+    "id": "1f45dbfd-f7dc-47e0-b097-4b2b46a02a9b",
+    "email": "shopper058@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "2-1 Umeda",
+      "zipCode": "530-0001",
+      "city": "Osaka",
+      "state": "Osaka",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4900-5329-3183-9331",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 907
+    }
+  },
+  {
+    "id": "21472a15-fcce-46f6-a50a-4578fbe94499",
+    "email": "shopper059@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1-1 Chiyoda",
+      "zipCode": "100-8111",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "372053950240266",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 863
+    }
+  },
+  {
+    "id": "73b6a09b-1bea-46ac-97fa-7f0483639007",
+    "email": "shopper060@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "ffa361be-0f92-40e1-87f9-7d05f6ca6b8b",
+    "email": "shopper061@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Plot 1 Shehu Shagari Way",
+      "zipCode": "900211",
+      "city": "Abuja",
+      "state": "FC",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4711-5921-2499-8566",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 401
+    }
+  },
+  {
+    "id": "a79b44b6-da50-4fed-9d4a-3d81b3a7d0e0",
+    "email": "shopper062@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4736-5766-1565-4524",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 168
+    }
+  },
+  {
+    "id": "5f65c8ce-bd21-4c11-be9d-61ee18b87245",
+    "email": "shopper063@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5316-5604-9451-9839",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 329
+    }
+  },
+  {
+    "id": "47503f1d-c33a-4f6c-9d69-1fba5e187b24",
+    "email": "shopper064@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "44777442-b187-43e6-9457-8ad9a867a096",
+    "email": "shopper065@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 MG Road",
+      "zipCode": "560001",
+      "city": "Bengaluru",
+      "state": "KA",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "a847bce7-90fa-4b57-a4ac-2130deaf528d",
+    "email": "shopper066@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "2-1 Umeda",
+      "zipCode": "530-0001",
+      "city": "Osaka",
+      "state": "Osaka",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4836-6752-5459-9104",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 872
+    }
+  },
+  {
+    "id": "9b69554d-7c54-435f-ac8c-3b6aa974d079",
+    "email": "shopper067@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4614-9784-0369-0032",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 885
+    }
+  },
+  {
+    "id": "bf3c5140-7f54-4511-81fa-964e1eb74b56",
+    "email": "shopper068@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4851-6060-7159-6965",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 396
+    }
+  },
+  {
+    "id": "9e3d750d-f296-49f0-8d23-72c22bffe17b",
+    "email": "shopper069@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "1422373f-8622-48d1-a683-e10796c044d0",
+    "email": "shopper070@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4218-1883-5523-1245",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 716
+    }
+  },
+  {
+    "id": "7e7e7419-a0c1-4035-85d9-5f51f387e1bd",
+    "email": "shopper071@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5595-5271-7744-9057",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 417
+    }
+  },
+  {
+    "id": "a508dc95-13a4-4492-897d-e16dd4ea120a",
+    "email": "shopper072@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4798-0793-5978-2077",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 831
+    }
+  },
+  {
+    "id": "fdb1429e-7010-4d13-b526-b22d3f6c21f7",
+    "email": "shopper073@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4466-5905-1518-6442",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 994
+    }
+  },
+  {
+    "id": "4f6b58c8-598d-4aec-aaaf-e5432434a678",
+    "email": "shopper074@example.com",
+    "tier": "business",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5148-6528-1685-0549",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 449
+    }
+  },
+  {
+    "id": "13c11754-27aa-4cbc-a337-7bbcfffe77c8",
+    "email": "shopper075@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4805-9296-2229-2703",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 792
+    }
+  },
+  {
+    "id": "72ecf16e-c8a7-43e9-bfa0-16c2c09cb506",
+    "email": "shopper076@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "pickup"
+  },
+  {
+    "id": "70cafdd8-fc04-4f08-9207-0158f2771f63",
+    "email": "shopper077@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4239-2407-5818-1413",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 560
+    }
+  },
+  {
+    "id": "38d77b9a-e916-4a57-b248-23ab177a8a5f",
+    "email": "shopper078@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1-1 Chiyoda",
+      "zipCode": "100-8111",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "same_day"
+  },
+  {
+    "id": "14e4180c-fe99-46a3-a2db-c8503c5bf3a7",
+    "email": "shopper079@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5322-0472-7790-1048",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 661
+    }
+  },
+  {
+    "id": "1f317405-4d18-4eba-bcd5-fd7f49c10669",
+    "email": "shopper080@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4179-8089-3246-0952",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 526
+    }
+  },
+  {
+    "id": "f4124360-1153-4e99-9c50-8720f982f4e0",
+    "email": "shopper081@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5470-6540-5153-1956",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 460
+    }
+  },
+  {
+    "id": "b20507bb-fb16-4757-b6f1-86abaf475b49",
+    "email": "shopper082@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "33107475-ca86-4225-8b36-e356339b77a8",
+    "email": "shopper083@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4874-0345-0541-5665",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 495
+    }
+  },
+  {
+    "id": "cc1b4157-ec9f-4c54-9e0a-72ab7f5db163",
+    "email": "shopper084@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4928-4511-5447-9626",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 459
+    }
+  },
+  {
+    "id": "fae3114b-a3b4-42bd-8649-42966f5842c3",
+    "email": "shopper085@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "ad973b67-9b89-45cb-9942-644c248d31ec",
+    "email": "shopper086@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "crypto",
+    "deliveryMethod": "standard",
+    "cryptoAsset": "ETH"
+  },
+  {
+    "id": "add702c9-2747-493c-9ae7-7eab084a6780",
+    "email": "shopper087@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "crypto",
+    "deliveryMethod": "standard",
+    "cryptoAsset": "BTC"
+  },
+  {
+    "id": "f5e4a471-3fe6-4c9c-8758-367ba6499cdc",
+    "email": "shopper088@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4814-4739-4731-2176",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 189
+    }
+  },
+  {
+    "id": "8acbbe09-8ccc-4cea-909f-d8eeb5a47200",
+    "email": "shopper089@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "fc31a597-1f11-4c0f-b967-e60a823dd107",
+    "email": "shopper090@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "8d38bbd8-fba6-4bf7-8dbc-c65377a7e8b7",
+    "email": "shopper091@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4786-6912-5177-8526",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 286
+    }
+  },
+  {
+    "id": "d4d60735-0e2f-4958-9e43-1e06e9247069",
+    "email": "shopper092@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4358-4143-8424-9812",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 706
+    }
+  },
+  {
+    "id": "9aea622f-e6e9-47ca-b87b-63849fddde2e",
+    "email": "shopper093@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 MG Road",
+      "zipCode": "560001",
+      "city": "Bengaluru",
+      "state": "KA",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "371094396907846",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 594
+    }
+  },
+  {
+    "id": "0f5675f8-b048-4aa1-92ae-5c22741b77f5",
+    "email": "shopper094@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4255-5625-8815-3711",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 353
+    }
+  },
+  {
+    "id": "6b0ae0e3-9d89-4047-9d39-d7936257a4a2",
+    "email": "shopper095@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4953-2787-7470-1685",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 320
+    }
+  },
+  {
+    "id": "d7c4fe9c-e1e0-4ffc-98f6-fd7f7eb162f1",
+    "email": "shopper096@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5424-5650-6098-3581",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 495
+    }
+  },
+  {
+    "id": "1e6a6628-9c6d-42d5-ae2e-9af99f8cc29f",
+    "email": "shopper097@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "66c14dca-8255-4a61-9a3b-031932f57510",
+    "email": "shopper098@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "83f82f16-e4a4-474c-9b33-e3a42620f9a9",
+    "email": "shopper099@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4949-5888-7947-0557",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 526
+    }
+  },
+  {
+    "id": "c86c6544-a7d4-4f50-b791-f1e543f9cd6b",
+    "email": "shopper100@example.com",
+    "tier": "business",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4728-9623-0913-0759",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 522
+    }
+  },
+  {
+    "id": "df70fb2a-78bb-42a5-aba7-42d29c89d374",
+    "email": "shopper101@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4857-8652-7858-5494",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 352
+    }
+  },
+  {
+    "id": "c56bad4c-4c30-47c4-bb75-6923f910abb3",
+    "email": "shopper102@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4584-4198-6652-4042",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 454
+    }
+  },
+  {
+    "id": "89e03e22-d3f4-449b-b3ba-ba8836c7d6fa",
+    "email": "shopper103@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "2-1 Umeda",
+      "zipCode": "530-0001",
+      "city": "Osaka",
+      "state": "Osaka",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "e7ba26ac-ab7a-4d1c-8cfe-f6833e11bafe",
+    "email": "shopper104@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4712-0826-7734-5406",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 337
+    }
+  },
+  {
+    "id": "d66d4627-e1da-4e6a-aafa-828c2cd10b9f",
+    "email": "shopper105@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "pickup"
+  },
+  {
+    "id": "ed10f004-df4e-413e-b64e-3dfcbfbeac7a",
+    "email": "shopper106@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5347-8872-8743-1523",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 763
+    }
+  },
+  {
+    "id": "915a1c30-4b86-45a1-8a6f-bff8564cfbd2",
+    "email": "shopper107@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5468-5161-2275-3048",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 557
+    }
+  },
+  {
+    "id": "42f525b9-02ed-43ce-92a8-1713b90ed44b",
+    "email": "shopper108@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Plot 1 Shehu Shagari Way",
+      "zipCode": "900211",
+      "city": "Abuja",
+      "state": "FC",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4426-8414-5933-2727",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 482
+    }
+  },
+  {
+    "id": "37e9d2e2-d35a-407a-aa02-17d0cd4f8b2b",
+    "email": "shopper109@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "906d5c8c-ead0-4c89-93fe-8a295c9deee0",
+    "email": "shopper110@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Plot 1 Shehu Shagari Way",
+      "zipCode": "900211",
+      "city": "Abuja",
+      "state": "FC",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4822-5871-3971-8708",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 625
+    }
+  },
+  {
+    "id": "b928e23f-4ee4-434e-8e92-0136ac3a812f",
+    "email": "shopper111@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4106-5180-1704-6224",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 483
+    }
+  },
+  {
+    "id": "602a4e57-60a3-49d4-a821-e716eac80da1",
+    "email": "shopper112@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4512-8682-3004-7865",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 943
+    }
+  },
+  {
+    "id": "e00da49d-effa-4002-b040-413c4690fb15",
+    "email": "shopper113@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4033-1190-7903-0673",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 322
+    }
+  },
+  {
+    "id": "d0d75e37-3bf2-425f-8a0d-2b73fe54ee4b",
+    "email": "shopper114@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5334-2836-4408-9268",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 148
+    }
+  },
+  {
+    "id": "6883ac6e-6a94-4054-b241-4482519894d8",
+    "email": "shopper115@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "7688d11f-ce47-48be-a4f4-3c62b523c0de",
+    "email": "shopper116@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5263-4351-7518-3044",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 717
+    }
+  },
+  {
+    "id": "abe42e7d-b96c-4163-966b-e275c2fe8954",
+    "email": "shopper117@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4033-1739-3638-5465",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 764
+    }
+  },
+  {
+    "id": "193e638d-774c-4afa-bf4d-908ce1fff6c0",
+    "email": "shopper118@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4355-6093-2048-9967",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 300
+    }
+  },
+  {
+    "id": "a7946320-8cf6-48b8-bfd2-38c33ee82983",
+    "email": "shopper119@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4772-5228-7280-8010",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 882
+    }
+  },
+  {
+    "id": "26a9e100-b509-409b-9166-58ce3b3f3800",
+    "email": "shopper120@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "8d388327-883f-43c6-81b1-58e90406ff44",
+    "email": "shopper121@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "6e3a0ba8-ac8d-4c7d-b2a6-e468d02b1243",
+    "email": "shopper122@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4233-9845-4615-6791",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 407
+    }
+  },
+  {
+    "id": "081c79d4-c274-47eb-a65f-7b8adbb44021",
+    "email": "shopper123@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "6f14b3f6-d867-488b-bff6-b824152aeaec",
+    "email": "shopper124@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "pickup"
+  },
+  {
+    "id": "e336c243-b139-4476-9e3c-e88be6b9d31a",
+    "email": "shopper125@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 MG Road",
+      "zipCode": "560001",
+      "city": "Bengaluru",
+      "state": "KA",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5389-0250-3926-1422",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 680
+    }
+  },
+  {
+    "id": "c16f9bcc-6243-4ed7-94ec-3f338a624cbd",
+    "email": "shopper126@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "3b6dca0d-6fe5-440b-9901-ef870dbf0caf",
+    "email": "shopper127@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "45f8c28d-a255-41bb-8795-8c1f538d6b8c",
+    "email": "shopper128@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "614c721d-a921-4b4c-95fb-e976ae007b7e",
+    "email": "shopper129@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5142-6265-5110-4755",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 235
+    }
+  },
+  {
+    "id": "1a7167c7-6875-4545-832f-52c48e0370cf",
+    "email": "shopper130@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5360-4661-8398-2624",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 408
+    }
+  },
+  {
+    "id": "4cbc9044-6bcd-4ce7-86a5-6fe86f46f1b1",
+    "email": "shopper131@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4799-3712-4065-9658",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 540
+    }
+  },
+  {
+    "id": "336b00cb-b1fe-4d13-b280-df1d9a6c0db9",
+    "email": "shopper132@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Paulista 1578",
+      "zipCode": "01310-200",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4793-5646-5193-9827",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 127
+    }
+  },
+  {
+    "id": "4a94ae9f-cc35-4e4f-b03e-957f35ab8466",
+    "email": "shopper133@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "crypto",
+    "deliveryMethod": "express",
+    "cryptoAsset": "ETH"
+  },
+  {
+    "id": "2775ee42-a89e-42f2-80af-bf3f3df51967",
+    "email": "shopper134@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "eb9ed274-ec6a-47ad-81b1-5db988cc4d49",
+    "email": "shopper135@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Nariman Point",
+      "zipCode": "400021",
+      "city": "Mumbai",
+      "state": "MH",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "378911352909651",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 110
+    }
+  },
+  {
+    "id": "b00ac64c-949c-48d4-8ed8-a80d84cfee39",
+    "email": "shopper136@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5582-5071-4611-2544",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 903
+    }
+  },
+  {
+    "id": "b25f13df-b8d4-4848-b02b-a49f18fdd2b9",
+    "email": "shopper137@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5151-2382-8258-6736",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 290
+    }
+  },
+  {
+    "id": "3283daa4-e212-4b7c-9d36-1cb6bcc57be0",
+    "email": "shopper138@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4419-1825-5371-4786",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 711
+    }
+  },
+  {
+    "id": "753659ef-d873-4ad9-9a1b-af0e591196dc",
+    "email": "shopper139@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4991-2513-4125-2866",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 241
+    }
+  },
+  {
+    "id": "eb4e2281-b184-41fc-8991-b01aa2b03c4b",
+    "email": "shopper140@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4225-7905-0723-6880",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 518
+    }
+  },
+  {
+    "id": "1529e6f5-2ad1-4fe8-bd1b-695e71a0449d",
+    "email": "shopper141@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "90ce77e9-7513-43b9-87de-96ea2b0fbe44",
+    "email": "shopper142@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4148-5807-8361-3405",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 456
+    }
+  },
+  {
+    "id": "cfd7f3b9-c68f-4ba5-9e0d-02b5fe7402cd",
+    "email": "shopper143@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Av. Paulista 1578",
+      "zipCode": "01310-200",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4962-9233-0958-4986",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 820
+    }
+  },
+  {
+    "id": "e67093a0-fc48-4615-83b0-b35cdba6fdf8",
+    "email": "shopper144@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5142-2325-3672-9467",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 177
+    }
+  },
+  {
+    "id": "efb3b939-b1d8-4887-8739-cc7bbff30c8d",
+    "email": "shopper145@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5175-1863-6374-5451",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 233
+    }
+  },
+  {
+    "id": "0c648ca2-c323-4466-aebb-b90ee4e751de",
+    "email": "shopper146@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "6d84414d-f541-41ea-bde9-1c42002c4c22",
+    "email": "shopper147@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5241-5415-2064-3611",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 101
+    }
+  },
+  {
+    "id": "71efe72a-ae13-491e-84fa-4c7239e7a4f1",
+    "email": "shopper148@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "376271361115549",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 892
+    }
+  },
+  {
+    "id": "87cf63fd-1183-4c4f-a492-04c7ad58db1b",
+    "email": "shopper149@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Av. Paulista 1578",
+      "zipCode": "01310-200",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "9db7284b-6965-41d1-ab7e-2e6426c0747e",
+    "email": "shopper150@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "6dec6bbd-f697-47a1-99fe-3d53624fea4b",
+    "email": "shopper151@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4899-9404-3898-3648",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 902
+    }
+  },
+  {
+    "id": "a3595d1f-7fe4-442e-bdb7-88a61cdcc4c2",
+    "email": "shopper152@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1-1 Chiyoda",
+      "zipCode": "100-8111",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "375269658271091",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 368
+    }
+  },
+  {
+    "id": "a0ea0251-4957-43a2-81b1-3b8065e1b0f5",
+    "email": "shopper153@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "crypto",
+    "deliveryMethod": "standard",
+    "cryptoAsset": "BTC"
+  },
+  {
+    "id": "ebc1bb52-82e4-4d4a-943a-c1c54f560ed5",
+    "email": "shopper154@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4146-3031-6179-9049",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 222
+    }
+  },
+  {
+    "id": "58c1aad6-f3f8-4ea4-bf14-eafa29f0ef7c",
+    "email": "shopper155@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "e2ec13f4-bba1-4ed9-84cd-bfdddf9b141e",
+    "email": "shopper156@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "13badc91-a0a5-4de6-939f-71a2f99cea5c",
+    "email": "shopper157@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "372524191380004",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 583
+    }
+  },
+  {
+    "id": "8d888beb-090d-4655-9b84-2660f5d8fb91",
+    "email": "shopper158@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4365-4195-1802-3802",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 998
+    }
+  },
+  {
+    "id": "8d9765c7-161d-4c87-93c9-fe594f89e3b2",
+    "email": "shopper159@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "ff6ef9ed-7e4c-429f-b8cb-ab4c97790e84",
+    "email": "shopper160@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5220-6038-5050-6415",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 343
+    }
+  },
+  {
+    "id": "17d09810-47a2-410b-b62e-db49247296a4",
+    "email": "shopper161@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "100 Queen St W",
+      "zipCode": "M5H 2N2",
+      "city": "Toronto",
+      "state": "ON",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "express"
+  },
+  {
+    "id": "1877bc06-94ad-4252-95bc-2a3ebf7655d7",
+    "email": "shopper162@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5162-3445-6557-4311",
+      "creditCardExpirationMonth": 4,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 898
+    }
+  },
+  {
+    "id": "50647c59-774f-4354-b316-ce642a147a96",
+    "email": "shopper163@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4474-1124-9035-2137",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 625
+    }
+  },
+  {
+    "id": "f3bc9a71-07f4-4ee5-ac82-989ffd9cfbb0",
+    "email": "shopper164@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4712-1003-2365-1991",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 122
+    }
+  },
+  {
+    "id": "178be968-20f8-4ba2-8f2e-32967184b713",
+    "email": "shopper165@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 MG Road",
+      "zipCode": "560001",
+      "city": "Bengaluru",
+      "state": "KA",
+      "country": "IN"
+    },
+    "userCurrency": "INR",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "d259f960-6ee3-4607-92ea-1324ec93e596",
+    "email": "shopper166@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4532-4472-0999-3478",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 590
+    }
+  },
+  {
+    "id": "e2789642-a484-4035-b30f-aaa36b52f93c",
+    "email": "shopper167@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4065-7875-9856-4207",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2039,
+      "creditCardCvv": 324
+    }
+  },
+  {
+    "id": "5b80b8d1-8788-4fed-b8c0-4ed8fdd4ff21",
+    "email": "shopper168@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "pickup",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4348-0396-5223-9550",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 820
+    }
+  },
+  {
+    "id": "cf767343-fced-4994-9631-c383303014d0",
+    "email": "shopper169@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4103-9308-7059-3254",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 921
+    }
+  },
+  {
+    "id": "eacf33a9-b466-4ab6-962c-04dd25d07461",
+    "email": "shopper170@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Atlantica 1702",
+      "zipCode": "22021-001",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4156-9154-5226-7522",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2038,
+      "creditCardCvv": 810
+    }
+  },
+  {
+    "id": "60ddc7f1-2ce3-4822-9080-12b896c56fe7",
+    "email": "shopper171@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "2-1 Umeda",
+      "zipCode": "530-0001",
+      "city": "Osaka",
+      "state": "Osaka",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5569-0295-9391-7256",
+      "creditCardExpirationMonth": 12,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 343
+    }
+  },
+  {
+    "id": "d2586d90-16b6-4f61-b68c-62e6e2a45909",
+    "email": "shopper172@example.com",
+    "tier": "plus",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4433-1541-0067-6265",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 459
+    }
+  },
+  {
+    "id": "a6a5f0ff-93fb-41d0-9d32-6d9cc9ea356a",
+    "email": "shopper173@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "1acf42c5-f3a0-4120-82d9-43ee51976e75",
+    "email": "shopper174@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5515-9970-6296-2018",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 294
+    }
+  },
+  {
+    "id": "0cb4e891-188d-423b-bccf-f6eb4c2272f3",
+    "email": "shopper175@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "a005f5e1-a97a-4846-92ea-ef184b6797a1",
+    "email": "shopper176@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4417-1467-7418-6258",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 291
+    }
+  },
+  {
+    "id": "44c07a9a-d64a-4b1f-b9eb-038a436e3c49",
+    "email": "shopper177@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4586-9380-6868-7933",
+      "creditCardExpirationMonth": 8,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 180
+    }
+  },
+  {
+    "id": "ccea5031-844e-450b-a684-390c923b7820",
+    "email": "shopper178@example.com",
+    "tier": "standard",
+    "platform": "android",
+    "address": {
+      "streetAddress": "410 Terry Ave N",
+      "zipCode": "98109",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "377223320616322",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 427
+    }
+  },
+  {
+    "id": "537d0bd1-8d53-4c75-a5b9-0e948e6de263",
+    "email": "shopper179@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1-1 Chiyoda",
+      "zipCode": "100-8111",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4998-6162-2999-1194",
+      "creditCardExpirationMonth": 2,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 988
+    }
+  },
+  {
+    "id": "7c4f48e4-a7a0-4a3d-a20f-230b439e754c",
+    "email": "shopper180@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "b0c58278-54dc-4ba5-a103-5e1ce3bb22ae",
+    "email": "shopper181@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1055 W Georgia St",
+      "zipCode": "V6E 3P3",
+      "city": "Vancouver",
+      "state": "BC",
+      "country": "CA"
+    },
+    "userCurrency": "CAD",
+    "paymentMethod": "card",
+    "deliveryMethod": "same_day",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "370544471324755",
+      "creditCardExpirationMonth": 5,
+      "creditCardExpirationYear": 2036,
+      "creditCardCvv": 719
+    }
+  },
+  {
+    "id": "bdae8eff-683c-410e-92ef-a93be9d6bb7e",
+    "email": "shopper182@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4214-8628-9023-3031",
+      "creditCardExpirationMonth": 1,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 151
+    }
+  },
+  {
+    "id": "659e0258-814f-4657-b6d7-0561d2d14ef5",
+    "email": "shopper183@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1-1 Chiyoda",
+      "zipCode": "100-8111",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4972-7985-5241-4067",
+      "creditCardExpirationMonth": 1,
+      "creditCardExpirationYear": 2032,
+      "creditCardCvv": 974
+    }
+  },
+  {
+    "id": "34ec5264-ad7d-4f81-b9a0-f145a5bab050",
+    "email": "shopper184@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "99e4704c-2c56-40cd-a5ba-247221df5609",
+    "email": "shopper185@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "374665743748962",
+      "creditCardExpirationMonth": 10,
+      "creditCardExpirationYear": 2031,
+      "creditCardCvv": 107
+    }
+  },
+  {
+    "id": "4c68eb17-485d-431c-9bea-b52998017a2f",
+    "email": "shopper186@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Deansgate",
+      "zipCode": "M3 1AZ",
+      "city": "Manchester",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4544-4328-3096-5208",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2037,
+      "creditCardCvv": 402
+    }
+  },
+  {
+    "id": "b54401cb-9541-4a9d-890a-aa93bc9a7998",
+    "email": "shopper187@example.com",
+    "tier": "business",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "mastercard",
+    "creditCard": {
+      "creditCardNumber": "5575-8428-2417-2489",
+      "creditCardExpirationMonth": 3,
+      "creditCardExpirationYear": 2035,
+      "creditCardCvv": 770
+    }
+  },
+  {
+    "id": "c9c04b7d-6ba4-470b-8e9d-23e9df162ec3",
+    "email": "shopper188@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Microsoft Way",
+      "zipCode": "98052",
+      "city": "Redmond",
+      "state": "WA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4170-9991-7381-6843",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 991
+    }
+  },
+  {
+    "id": "91c46efc-fcb8-46bb-a8c0-cbef57b936b0",
+    "email": "shopper189@example.com",
+    "tier": "plus",
+    "platform": "android",
+    "address": {
+      "streetAddress": "Av. Paulista 1578",
+      "zipCode": "01310-200",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "bnpl",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "fc9476b1-a18b-4d15-9527-34077cd2192f",
+    "email": "shopper190@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Av. Paulista 1578",
+      "zipCode": "01310-200",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "google_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "c37944c1-c903-44ea-bd54-ec82288f3435",
+    "email": "shopper191@example.com",
+    "tier": "plus",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4676-0083-5058-3009",
+      "creditCardExpirationMonth": 11,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 331
+    }
+  },
+  {
+    "id": "96b31f4a-80da-48ca-a230-5d271a4b1606",
+    "email": "shopper192@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Marienplatz 8",
+      "zipCode": "80331",
+      "city": "Munich",
+      "state": "BY",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "card",
+    "deliveryMethod": "standard",
+    "cardNetwork": "amex",
+    "creditCard": {
+      "creditCardNumber": "377898562575326",
+      "creditCardExpirationMonth": 7,
+      "creditCardExpirationYear": 2030,
+      "creditCardCvv": 333
+    }
+  },
+  {
+    "id": "2b429596-812f-4a38-96f6-1c09059c1ba0",
+    "email": "shopper193@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4489-0901-0016-7611",
+      "creditCardExpirationMonth": 9,
+      "creditCardExpirationYear": 2034,
+      "creditCardCvv": 585
+    }
+  },
+  {
+    "id": "6bbe3b5a-4d15-47d8-8261-c87aa15c159a",
+    "email": "shopper194@example.com",
+    "tier": "standard",
+    "platform": "ios",
+    "address": {
+      "streetAddress": "Unter den Linden 77",
+      "zipCode": "10117",
+      "city": "Berlin",
+      "state": "BE",
+      "country": "DE"
+    },
+    "userCurrency": "EUR",
+    "paymentMethod": "apple_pay",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "b8011026-82f7-4861-9adb-a8cfe60c1638",
+    "email": "shopper195@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "10 Downing St",
+      "zipCode": "SW1A 2AA",
+      "city": "London",
+      "state": "England",
+      "country": "GB"
+    },
+    "userCurrency": "GBP",
+    "paymentMethod": "card",
+    "deliveryMethod": "express",
+    "cardNetwork": "visa",
+    "creditCard": {
+      "creditCardNumber": "4934-8356-4208-7375",
+      "creditCardExpirationMonth": 6,
+      "creditCardExpirationYear": 2033,
+      "creditCardCvv": 102
+    }
+  },
+  {
+    "id": "7e7d9a19-ab45-4578-92fb-acf6d5d1c669",
+    "email": "shopper196@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1600 Amphitheatre Parkway",
+      "zipCode": "94043",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "fd1935cc-74ed-460e-bb2d-520ba4f34185",
+    "email": "shopper197@example.com",
+    "tier": "business",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1 Adeola Odeku St",
+      "zipCode": "101241",
+      "city": "Lagos",
+      "state": "LA",
+      "country": "NG"
+    },
+    "userCurrency": "USD",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "standard"
+  },
+  {
+    "id": "500d92a7-ad40-4244-8d35-66ef5c370739",
+    "email": "shopper198@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "Av. Paulista 1578",
+      "zipCode": "01310-200",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "country": "BR"
+    },
+    "userCurrency": "BRL",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "same_day"
+  },
+  {
+    "id": "54231dbe-2ba6-4158-a5ae-cf37a9d1a28e",
+    "email": "shopper199@example.com",
+    "tier": "standard",
+    "platform": "web",
+    "address": {
+      "streetAddress": "1-1 Chiyoda",
+      "zipCode": "100-8111",
+      "city": "Tokyo",
+      "state": "Tokyo",
+      "country": "JP"
+    },
+    "userCurrency": "JPY",
+    "paymentMethod": "paypal",
+    "deliveryMethod": "express"
+  }
 ]

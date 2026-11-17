@@ -16,6 +16,9 @@ namespace Accounting
         [GeneratedRegex(@"(?:^|_)(API|TOKEN|SECRET|KEY|PASSWORD|PASS|PWD|HEADERS?|CREDENTIALS)(?:_|=|$)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)]
         private static partial Regex SecretsPattern();
 
+        public static string ToSnakeCase(this Enum value) =>
+            string.Concat(value.ToString().Select((c, i) => i > 0 && char.IsUpper(c) ? "_" + char.ToLowerInvariant(c) : char.ToLowerInvariant(c).ToString()));
+
         public static IEnumerable<DictionaryEntry> FilterRelevant(this IDictionary envs)
         {
             foreach (DictionaryEntry env in envs)

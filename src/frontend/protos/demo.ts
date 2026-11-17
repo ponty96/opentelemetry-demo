@@ -23,6 +23,127 @@ export const protobufPackage = "oteldemo";
 
 export const protobufFileName = "demo.proto";
 
+/** How the shopper wants the order delivered. Drives quote price and carrier. */
+export enum DeliveryMethod {
+  /** DELIVERY_METHOD_UNSPECIFIED - treated as standard */
+  DELIVERY_METHOD_UNSPECIFIED = 0,
+  DELIVERY_METHOD_STANDARD = 1,
+  DELIVERY_METHOD_EXPRESS = 2,
+  DELIVERY_METHOD_SAME_DAY = 3,
+  DELIVERY_METHOD_PICKUP = 4,
+  UNRECOGNIZED = -1,
+}
+
+export function deliveryMethodFromJSON(object: any): DeliveryMethod {
+  switch (object) {
+    case 0:
+    case "DELIVERY_METHOD_UNSPECIFIED":
+      return DeliveryMethod.DELIVERY_METHOD_UNSPECIFIED;
+    case 1:
+    case "DELIVERY_METHOD_STANDARD":
+      return DeliveryMethod.DELIVERY_METHOD_STANDARD;
+    case 2:
+    case "DELIVERY_METHOD_EXPRESS":
+      return DeliveryMethod.DELIVERY_METHOD_EXPRESS;
+    case 3:
+    case "DELIVERY_METHOD_SAME_DAY":
+      return DeliveryMethod.DELIVERY_METHOD_SAME_DAY;
+    case 4:
+    case "DELIVERY_METHOD_PICKUP":
+      return DeliveryMethod.DELIVERY_METHOD_PICKUP;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return DeliveryMethod.UNRECOGNIZED;
+  }
+}
+
+export function deliveryMethodToJSON(object: DeliveryMethod): string {
+  switch (object) {
+    case DeliveryMethod.DELIVERY_METHOD_UNSPECIFIED:
+      return "DELIVERY_METHOD_UNSPECIFIED";
+    case DeliveryMethod.DELIVERY_METHOD_STANDARD:
+      return "DELIVERY_METHOD_STANDARD";
+    case DeliveryMethod.DELIVERY_METHOD_EXPRESS:
+      return "DELIVERY_METHOD_EXPRESS";
+    case DeliveryMethod.DELIVERY_METHOD_SAME_DAY:
+      return "DELIVERY_METHOD_SAME_DAY";
+    case DeliveryMethod.DELIVERY_METHOD_PICKUP:
+      return "DELIVERY_METHOD_PICKUP";
+    case DeliveryMethod.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
+/**
+ * How the shopper pays. Card payments also carry CreditCardInfo; wallets carry a
+ * wallet_token; crypto carries the asset being paid with.
+ */
+export enum PaymentMethodType {
+  /** PAYMENT_METHOD_TYPE_UNSPECIFIED - treated as card */
+  PAYMENT_METHOD_TYPE_UNSPECIFIED = 0,
+  PAYMENT_METHOD_TYPE_CARD = 1,
+  PAYMENT_METHOD_TYPE_APPLE_PAY = 2,
+  PAYMENT_METHOD_TYPE_GOOGLE_PAY = 3,
+  PAYMENT_METHOD_TYPE_PAYPAL = 4,
+  PAYMENT_METHOD_TYPE_CRYPTO = 5,
+  PAYMENT_METHOD_TYPE_BNPL = 6,
+  UNRECOGNIZED = -1,
+}
+
+export function paymentMethodTypeFromJSON(object: any): PaymentMethodType {
+  switch (object) {
+    case 0:
+    case "PAYMENT_METHOD_TYPE_UNSPECIFIED":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_UNSPECIFIED;
+    case 1:
+    case "PAYMENT_METHOD_TYPE_CARD":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_CARD;
+    case 2:
+    case "PAYMENT_METHOD_TYPE_APPLE_PAY":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_APPLE_PAY;
+    case 3:
+    case "PAYMENT_METHOD_TYPE_GOOGLE_PAY":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_GOOGLE_PAY;
+    case 4:
+    case "PAYMENT_METHOD_TYPE_PAYPAL":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_PAYPAL;
+    case 5:
+    case "PAYMENT_METHOD_TYPE_CRYPTO":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_CRYPTO;
+    case 6:
+    case "PAYMENT_METHOD_TYPE_BNPL":
+      return PaymentMethodType.PAYMENT_METHOD_TYPE_BNPL;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return PaymentMethodType.UNRECOGNIZED;
+  }
+}
+
+export function paymentMethodTypeToJSON(object: PaymentMethodType): string {
+  switch (object) {
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_UNSPECIFIED:
+      return "PAYMENT_METHOD_TYPE_UNSPECIFIED";
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_CARD:
+      return "PAYMENT_METHOD_TYPE_CARD";
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_APPLE_PAY:
+      return "PAYMENT_METHOD_TYPE_APPLE_PAY";
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_GOOGLE_PAY:
+      return "PAYMENT_METHOD_TYPE_GOOGLE_PAY";
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_PAYPAL:
+      return "PAYMENT_METHOD_TYPE_PAYPAL";
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_CRYPTO:
+      return "PAYMENT_METHOD_TYPE_CRYPTO";
+    case PaymentMethodType.PAYMENT_METHOD_TYPE_BNPL:
+      return "PAYMENT_METHOD_TYPE_BNPL";
+    case PaymentMethodType.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 export interface CartItem {
   productId: string;
   quantity: number;
@@ -92,6 +213,7 @@ export interface SearchProductsResponse {
 export interface GetQuoteRequest {
   address: Address | undefined;
   items: CartItem[];
+  deliveryMethod: DeliveryMethod;
 }
 
 export interface GetQuoteResponse {
@@ -101,10 +223,16 @@ export interface GetQuoteResponse {
 export interface ShipOrderRequest {
   address: Address | undefined;
   items: CartItem[];
+  deliveryMethod: DeliveryMethod;
 }
 
 export interface ShipOrderResponse {
   trackingId: string;
+  /**
+   * Carrier chosen by the shipping service from delivery method and country
+   * (usps, ups, fedex, dhl, local_courier).
+   */
+  carrier: string;
 }
 
 export interface Address {
@@ -155,9 +283,16 @@ export interface CreditCardInfo {
   creditCardExpirationMonth: number;
 }
 
+export interface PaymentMethod {
+  type: PaymentMethodType;
+  walletToken?: string | undefined;
+  cryptoAsset?: string | undefined;
+}
+
 export interface ChargeRequest {
   amount: Money | undefined;
   creditCard: CreditCardInfo | undefined;
+  paymentMethod: PaymentMethod | undefined;
 }
 
 export interface ChargeResponse {
@@ -175,6 +310,11 @@ export interface OrderResult {
   shippingCost: Money | undefined;
   shippingAddress: Address | undefined;
   items: OrderItem[];
+  paymentMethod: PaymentMethodType;
+  deliveryMethod: DeliveryMethod;
+  carrier: string;
+  /** visa, mastercard, amex, discover; empty for non-card payments */
+  cardNetwork: string;
 }
 
 export interface SendOrderConfirmationRequest {
@@ -188,6 +328,8 @@ export interface PlaceOrderRequest {
   address: Address | undefined;
   email: string;
   creditCard: CreditCardInfo | undefined;
+  paymentMethod: PaymentMethod | undefined;
+  deliveryMethod: DeliveryMethod;
 }
 
 export interface PlaceOrderResponse {
@@ -1317,7 +1459,7 @@ export const SearchProductsResponse: MessageFns<SearchProductsResponse> = {
 };
 
 function createBaseGetQuoteRequest(): GetQuoteRequest {
-  return { address: undefined, items: [] };
+  return { address: undefined, items: [], deliveryMethod: 0 };
 }
 
 export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
@@ -1327,6 +1469,9 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
     }
     for (const v of message.items) {
       CartItem.encode(v!, writer.uint32(18).fork()).join();
+    }
+    if (message.deliveryMethod !== 0) {
+      writer.uint32(24).int32(message.deliveryMethod);
     }
     return writer;
   },
@@ -1360,6 +1505,14 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
             message.items.push(CartItem.decode(reader, reader.uint32()));
             continue;
           }
+          case 3: {
+            if (tag !== 24) {
+              break;
+            }
+
+            message.deliveryMethod = reader.int32() as any;
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -1376,6 +1529,11 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
     return {
       address: isSet(object.address) ? Address.fromJSON(object.address) : undefined,
       items: globalThis.Array.isArray(object?.items) ? object.items.map((e: any) => CartItem.fromJSON(e)) : [],
+      deliveryMethod: isSet(object.deliveryMethod)
+        ? deliveryMethodFromJSON(object.deliveryMethod)
+        : isSet(object.delivery_method)
+        ? deliveryMethodFromJSON(object.delivery_method)
+        : 0,
     };
   },
 
@@ -1386,6 +1544,9 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
     }
     if (message.items?.length) {
       obj.items = message.items.map((e) => CartItem.toJSON(e));
+    }
+    if (message.deliveryMethod !== 0) {
+      obj.deliveryMethod = deliveryMethodToJSON(message.deliveryMethod);
     }
     return obj;
   },
@@ -1399,6 +1560,7 @@ export const GetQuoteRequest: MessageFns<GetQuoteRequest> = {
       ? Address.fromPartial(object.address)
       : undefined;
     message.items = object.items?.map((e) => CartItem.fromPartial(e)) || [];
+    message.deliveryMethod = object.deliveryMethod ?? 0;
     return message;
   },
 };
@@ -1479,7 +1641,7 @@ export const GetQuoteResponse: MessageFns<GetQuoteResponse> = {
 };
 
 function createBaseShipOrderRequest(): ShipOrderRequest {
-  return { address: undefined, items: [] };
+  return { address: undefined, items: [], deliveryMethod: 0 };
 }
 
 export const ShipOrderRequest: MessageFns<ShipOrderRequest> = {
@@ -1489,6 +1651,9 @@ export const ShipOrderRequest: MessageFns<ShipOrderRequest> = {
     }
     for (const v of message.items) {
       CartItem.encode(v!, writer.uint32(18).fork()).join();
+    }
+    if (message.deliveryMethod !== 0) {
+      writer.uint32(24).int32(message.deliveryMethod);
     }
     return writer;
   },
@@ -1522,6 +1687,14 @@ export const ShipOrderRequest: MessageFns<ShipOrderRequest> = {
             message.items.push(CartItem.decode(reader, reader.uint32()));
             continue;
           }
+          case 3: {
+            if (tag !== 24) {
+              break;
+            }
+
+            message.deliveryMethod = reader.int32() as any;
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -1538,6 +1711,11 @@ export const ShipOrderRequest: MessageFns<ShipOrderRequest> = {
     return {
       address: isSet(object.address) ? Address.fromJSON(object.address) : undefined,
       items: globalThis.Array.isArray(object?.items) ? object.items.map((e: any) => CartItem.fromJSON(e)) : [],
+      deliveryMethod: isSet(object.deliveryMethod)
+        ? deliveryMethodFromJSON(object.deliveryMethod)
+        : isSet(object.delivery_method)
+        ? deliveryMethodFromJSON(object.delivery_method)
+        : 0,
     };
   },
 
@@ -1548,6 +1726,9 @@ export const ShipOrderRequest: MessageFns<ShipOrderRequest> = {
     }
     if (message.items?.length) {
       obj.items = message.items.map((e) => CartItem.toJSON(e));
+    }
+    if (message.deliveryMethod !== 0) {
+      obj.deliveryMethod = deliveryMethodToJSON(message.deliveryMethod);
     }
     return obj;
   },
@@ -1561,18 +1742,22 @@ export const ShipOrderRequest: MessageFns<ShipOrderRequest> = {
       ? Address.fromPartial(object.address)
       : undefined;
     message.items = object.items?.map((e) => CartItem.fromPartial(e)) || [];
+    message.deliveryMethod = object.deliveryMethod ?? 0;
     return message;
   },
 };
 
 function createBaseShipOrderResponse(): ShipOrderResponse {
-  return { trackingId: "" };
+  return { trackingId: "", carrier: "" };
 }
 
 export const ShipOrderResponse: MessageFns<ShipOrderResponse> = {
   encode(message: ShipOrderResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.trackingId !== "") {
       writer.uint32(10).string(message.trackingId);
+    }
+    if (message.carrier !== "") {
+      writer.uint32(18).string(message.carrier);
     }
     return writer;
   },
@@ -1598,6 +1783,14 @@ export const ShipOrderResponse: MessageFns<ShipOrderResponse> = {
             message.trackingId = reader.string();
             continue;
           }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.carrier = reader.string();
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -1617,6 +1810,7 @@ export const ShipOrderResponse: MessageFns<ShipOrderResponse> = {
         : isSet(object.tracking_id)
         ? globalThis.String(object.tracking_id)
         : "",
+      carrier: isSet(object.carrier) ? globalThis.String(object.carrier) : "",
     };
   },
 
@@ -1624,6 +1818,9 @@ export const ShipOrderResponse: MessageFns<ShipOrderResponse> = {
     const obj: any = {};
     if (message.trackingId !== "") {
       obj.trackingId = message.trackingId;
+    }
+    if (message.carrier !== "") {
+      obj.carrier = message.carrier;
     }
     return obj;
   },
@@ -1634,6 +1831,7 @@ export const ShipOrderResponse: MessageFns<ShipOrderResponse> = {
   fromPartial<I extends Exact<DeepPartial<ShipOrderResponse>, I>>(object: I): ShipOrderResponse {
     const message = createBaseShipOrderResponse();
     message.trackingId = object.trackingId ?? "";
+    message.carrier = object.carrier ?? "";
     return message;
   },
 };
@@ -2181,8 +2379,117 @@ export const CreditCardInfo: MessageFns<CreditCardInfo> = {
   },
 };
 
+function createBasePaymentMethod(): PaymentMethod {
+  return { type: 0, walletToken: undefined, cryptoAsset: undefined };
+}
+
+export const PaymentMethod: MessageFns<PaymentMethod> = {
+  encode(message: PaymentMethod, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.type !== 0) {
+      writer.uint32(8).int32(message.type);
+    }
+    if (message.walletToken !== undefined) {
+      writer.uint32(18).string(message.walletToken);
+    }
+    if (message.cryptoAsset !== undefined) {
+      writer.uint32(26).string(message.cryptoAsset);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): PaymentMethod {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const previousRecursionDepth = (reader as any).__tsProtoDecodeDepth ?? 0;
+    if (previousRecursionDepth >= 100) {
+      throw new globalThis.Error("protobuf decode recursion limit exceeded");
+    }
+    (reader as any).__tsProtoDecodeDepth = previousRecursionDepth + 1;
+    try {
+      const end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBasePaymentMethod();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 8) {
+              break;
+            }
+
+            message.type = reader.int32() as any;
+            continue;
+          }
+          case 2: {
+            if (tag !== 18) {
+              break;
+            }
+
+            message.walletToken = reader.string();
+            continue;
+          }
+          case 3: {
+            if (tag !== 26) {
+              break;
+            }
+
+            message.cryptoAsset = reader.string();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    } finally {
+      (reader as any).__tsProtoDecodeDepth = previousRecursionDepth;
+    }
+  },
+
+  fromJSON(object: any): PaymentMethod {
+    return {
+      type: isSet(object.type) ? paymentMethodTypeFromJSON(object.type) : 0,
+      walletToken: isSet(object.walletToken)
+        ? globalThis.String(object.walletToken)
+        : isSet(object.wallet_token)
+        ? globalThis.String(object.wallet_token)
+        : undefined,
+      cryptoAsset: isSet(object.cryptoAsset)
+        ? globalThis.String(object.cryptoAsset)
+        : isSet(object.crypto_asset)
+        ? globalThis.String(object.crypto_asset)
+        : undefined,
+    };
+  },
+
+  toJSON(message: PaymentMethod): unknown {
+    const obj: any = {};
+    if (message.type !== 0) {
+      obj.type = paymentMethodTypeToJSON(message.type);
+    }
+    if (message.walletToken !== undefined) {
+      obj.walletToken = message.walletToken;
+    }
+    if (message.cryptoAsset !== undefined) {
+      obj.cryptoAsset = message.cryptoAsset;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<PaymentMethod>, I>>(base?: I): PaymentMethod {
+    return PaymentMethod.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<PaymentMethod>, I>>(object: I): PaymentMethod {
+    const message = createBasePaymentMethod();
+    message.type = object.type ?? 0;
+    message.walletToken = object.walletToken ?? undefined;
+    message.cryptoAsset = object.cryptoAsset ?? undefined;
+    return message;
+  },
+};
+
 function createBaseChargeRequest(): ChargeRequest {
-  return { amount: undefined, creditCard: undefined };
+  return { amount: undefined, creditCard: undefined, paymentMethod: undefined };
 }
 
 export const ChargeRequest: MessageFns<ChargeRequest> = {
@@ -2192,6 +2499,9 @@ export const ChargeRequest: MessageFns<ChargeRequest> = {
     }
     if (message.creditCard !== undefined) {
       CreditCardInfo.encode(message.creditCard, writer.uint32(18).fork()).join();
+    }
+    if (message.paymentMethod !== undefined) {
+      PaymentMethod.encode(message.paymentMethod, writer.uint32(26).fork()).join();
     }
     return writer;
   },
@@ -2225,6 +2535,14 @@ export const ChargeRequest: MessageFns<ChargeRequest> = {
             message.creditCard = CreditCardInfo.decode(reader, reader.uint32());
             continue;
           }
+          case 3: {
+            if (tag !== 26) {
+              break;
+            }
+
+            message.paymentMethod = PaymentMethod.decode(reader, reader.uint32());
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -2245,6 +2563,11 @@ export const ChargeRequest: MessageFns<ChargeRequest> = {
         : isSet(object.credit_card)
         ? CreditCardInfo.fromJSON(object.credit_card)
         : undefined,
+      paymentMethod: isSet(object.paymentMethod)
+        ? PaymentMethod.fromJSON(object.paymentMethod)
+        : isSet(object.payment_method)
+        ? PaymentMethod.fromJSON(object.payment_method)
+        : undefined,
     };
   },
 
@@ -2255,6 +2578,9 @@ export const ChargeRequest: MessageFns<ChargeRequest> = {
     }
     if (message.creditCard !== undefined) {
       obj.creditCard = CreditCardInfo.toJSON(message.creditCard);
+    }
+    if (message.paymentMethod !== undefined) {
+      obj.paymentMethod = PaymentMethod.toJSON(message.paymentMethod);
     }
     return obj;
   },
@@ -2269,6 +2595,9 @@ export const ChargeRequest: MessageFns<ChargeRequest> = {
       : undefined;
     message.creditCard = (object.creditCard !== undefined && object.creditCard !== null)
       ? CreditCardInfo.fromPartial(object.creditCard)
+      : undefined;
+    message.paymentMethod = (object.paymentMethod !== undefined && object.paymentMethod !== null)
+      ? PaymentMethod.fromPartial(object.paymentMethod)
       : undefined;
     return message;
   },
@@ -2433,7 +2762,17 @@ export const OrderItem: MessageFns<OrderItem> = {
 };
 
 function createBaseOrderResult(): OrderResult {
-  return { orderId: "", shippingTrackingId: "", shippingCost: undefined, shippingAddress: undefined, items: [] };
+  return {
+    orderId: "",
+    shippingTrackingId: "",
+    shippingCost: undefined,
+    shippingAddress: undefined,
+    items: [],
+    paymentMethod: 0,
+    deliveryMethod: 0,
+    carrier: "",
+    cardNetwork: "",
+  };
 }
 
 export const OrderResult: MessageFns<OrderResult> = {
@@ -2452,6 +2791,18 @@ export const OrderResult: MessageFns<OrderResult> = {
     }
     for (const v of message.items) {
       OrderItem.encode(v!, writer.uint32(42).fork()).join();
+    }
+    if (message.paymentMethod !== 0) {
+      writer.uint32(48).int32(message.paymentMethod);
+    }
+    if (message.deliveryMethod !== 0) {
+      writer.uint32(56).int32(message.deliveryMethod);
+    }
+    if (message.carrier !== "") {
+      writer.uint32(66).string(message.carrier);
+    }
+    if (message.cardNetwork !== "") {
+      writer.uint32(74).string(message.cardNetwork);
     }
     return writer;
   },
@@ -2509,6 +2860,38 @@ export const OrderResult: MessageFns<OrderResult> = {
             message.items.push(OrderItem.decode(reader, reader.uint32()));
             continue;
           }
+          case 6: {
+            if (tag !== 48) {
+              break;
+            }
+
+            message.paymentMethod = reader.int32() as any;
+            continue;
+          }
+          case 7: {
+            if (tag !== 56) {
+              break;
+            }
+
+            message.deliveryMethod = reader.int32() as any;
+            continue;
+          }
+          case 8: {
+            if (tag !== 66) {
+              break;
+            }
+
+            message.carrier = reader.string();
+            continue;
+          }
+          case 9: {
+            if (tag !== 74) {
+              break;
+            }
+
+            message.cardNetwork = reader.string();
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -2546,6 +2929,22 @@ export const OrderResult: MessageFns<OrderResult> = {
       items: globalThis.Array.isArray(object?.items)
         ? object.items.map((e: any) => OrderItem.fromJSON(e))
         : [],
+      paymentMethod: isSet(object.paymentMethod)
+        ? paymentMethodTypeFromJSON(object.paymentMethod)
+        : isSet(object.payment_method)
+        ? paymentMethodTypeFromJSON(object.payment_method)
+        : 0,
+      deliveryMethod: isSet(object.deliveryMethod)
+        ? deliveryMethodFromJSON(object.deliveryMethod)
+        : isSet(object.delivery_method)
+        ? deliveryMethodFromJSON(object.delivery_method)
+        : 0,
+      carrier: isSet(object.carrier) ? globalThis.String(object.carrier) : "",
+      cardNetwork: isSet(object.cardNetwork)
+        ? globalThis.String(object.cardNetwork)
+        : isSet(object.card_network)
+        ? globalThis.String(object.card_network)
+        : "",
     };
   },
 
@@ -2566,6 +2965,18 @@ export const OrderResult: MessageFns<OrderResult> = {
     if (message.items?.length) {
       obj.items = message.items.map((e) => OrderItem.toJSON(e));
     }
+    if (message.paymentMethod !== 0) {
+      obj.paymentMethod = paymentMethodTypeToJSON(message.paymentMethod);
+    }
+    if (message.deliveryMethod !== 0) {
+      obj.deliveryMethod = deliveryMethodToJSON(message.deliveryMethod);
+    }
+    if (message.carrier !== "") {
+      obj.carrier = message.carrier;
+    }
+    if (message.cardNetwork !== "") {
+      obj.cardNetwork = message.cardNetwork;
+    }
     return obj;
   },
 
@@ -2583,6 +2994,10 @@ export const OrderResult: MessageFns<OrderResult> = {
       ? Address.fromPartial(object.shippingAddress)
       : undefined;
     message.items = object.items?.map((e) => OrderItem.fromPartial(e)) || [];
+    message.paymentMethod = object.paymentMethod ?? 0;
+    message.deliveryMethod = object.deliveryMethod ?? 0;
+    message.carrier = object.carrier ?? "";
+    message.cardNetwork = object.cardNetwork ?? "";
     return message;
   },
 };
@@ -2675,7 +3090,15 @@ export const SendOrderConfirmationRequest: MessageFns<SendOrderConfirmationReque
 };
 
 function createBasePlaceOrderRequest(): PlaceOrderRequest {
-  return { userId: "", userCurrency: "", address: undefined, email: "", creditCard: undefined };
+  return {
+    userId: "",
+    userCurrency: "",
+    address: undefined,
+    email: "",
+    creditCard: undefined,
+    paymentMethod: undefined,
+    deliveryMethod: 0,
+  };
 }
 
 export const PlaceOrderRequest: MessageFns<PlaceOrderRequest> = {
@@ -2694,6 +3117,12 @@ export const PlaceOrderRequest: MessageFns<PlaceOrderRequest> = {
     }
     if (message.creditCard !== undefined) {
       CreditCardInfo.encode(message.creditCard, writer.uint32(50).fork()).join();
+    }
+    if (message.paymentMethod !== undefined) {
+      PaymentMethod.encode(message.paymentMethod, writer.uint32(58).fork()).join();
+    }
+    if (message.deliveryMethod !== 0) {
+      writer.uint32(64).int32(message.deliveryMethod);
     }
     return writer;
   },
@@ -2751,6 +3180,22 @@ export const PlaceOrderRequest: MessageFns<PlaceOrderRequest> = {
             message.creditCard = CreditCardInfo.decode(reader, reader.uint32());
             continue;
           }
+          case 7: {
+            if (tag !== 58) {
+              break;
+            }
+
+            message.paymentMethod = PaymentMethod.decode(reader, reader.uint32());
+            continue;
+          }
+          case 8: {
+            if (tag !== 64) {
+              break;
+            }
+
+            message.deliveryMethod = reader.int32() as any;
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -2782,6 +3227,16 @@ export const PlaceOrderRequest: MessageFns<PlaceOrderRequest> = {
         : isSet(object.credit_card)
         ? CreditCardInfo.fromJSON(object.credit_card)
         : undefined,
+      paymentMethod: isSet(object.paymentMethod)
+        ? PaymentMethod.fromJSON(object.paymentMethod)
+        : isSet(object.payment_method)
+        ? PaymentMethod.fromJSON(object.payment_method)
+        : undefined,
+      deliveryMethod: isSet(object.deliveryMethod)
+        ? deliveryMethodFromJSON(object.deliveryMethod)
+        : isSet(object.delivery_method)
+        ? deliveryMethodFromJSON(object.delivery_method)
+        : 0,
     };
   },
 
@@ -2802,6 +3257,12 @@ export const PlaceOrderRequest: MessageFns<PlaceOrderRequest> = {
     if (message.creditCard !== undefined) {
       obj.creditCard = CreditCardInfo.toJSON(message.creditCard);
     }
+    if (message.paymentMethod !== undefined) {
+      obj.paymentMethod = PaymentMethod.toJSON(message.paymentMethod);
+    }
+    if (message.deliveryMethod !== 0) {
+      obj.deliveryMethod = deliveryMethodToJSON(message.deliveryMethod);
+    }
     return obj;
   },
 
@@ -2819,6 +3280,10 @@ export const PlaceOrderRequest: MessageFns<PlaceOrderRequest> = {
     message.creditCard = (object.creditCard !== undefined && object.creditCard !== null)
       ? CreditCardInfo.fromPartial(object.creditCard)
       : undefined;
+    message.paymentMethod = (object.paymentMethod !== undefined && object.paymentMethod !== null)
+      ? PaymentMethod.fromPartial(object.paymentMethod)
+      : undefined;
+    message.deliveryMethod = object.deliveryMethod ?? 0;
     return message;
   },
 };
