@@ -112,6 +112,7 @@ service ShippingService {
 message GetQuoteRequest {
     Address address = 1;
     repeated CartItem items = 2;
+    DeliveryMethod delivery_method = 3;
 }
 
 message GetQuoteResponse {
@@ -121,10 +122,23 @@ message GetQuoteResponse {
 message ShipOrderRequest {
     Address address = 1;
     repeated CartItem items = 2;
+    DeliveryMethod delivery_method = 3;
 }
 
 message ShipOrderResponse {
     string tracking_id = 1;
+    // Carrier chosen by the shipping service from delivery method and country
+    // (usps, ups, fedex, dhl, local_courier).
+    string carrier = 2;
+}
+
+// How the shopper wants the order delivered. Drives quote price and carrier.
+enum DeliveryMethod {
+    DELIVERY_METHOD_UNSPECIFIED = 0; // treated as standard
+    DELIVERY_METHOD_STANDARD = 1;
+    DELIVERY_METHOD_EXPRESS = 2;
+    DELIVERY_METHOD_SAME_DAY = 3;
+    DELIVERY_METHOD_PICKUP = 4;
 }
 
 message Address {
@@ -185,9 +199,28 @@ message CreditCardInfo {
     int32 credit_card_expiration_month = 4;
 }
 
+// How the shopper pays. Card payments also carry CreditCardInfo; wallets carry a
+// wallet_token; crypto carries the asset being paid with.
+enum PaymentMethodType {
+    PAYMENT_METHOD_TYPE_UNSPECIFIED = 0; // treated as card
+    PAYMENT_METHOD_TYPE_CARD = 1;
+    PAYMENT_METHOD_TYPE_APPLE_PAY = 2;
+    PAYMENT_METHOD_TYPE_GOOGLE_PAY = 3;
+    PAYMENT_METHOD_TYPE_PAYPAL = 4;
+    PAYMENT_METHOD_TYPE_CRYPTO = 5;
+    PAYMENT_METHOD_TYPE_BNPL = 6;
+}
+
+message PaymentMethod {
+    PaymentMethodType type = 1;
+    optional string wallet_token = 2;
+    optional string crypto_asset = 3;
+}
+
 message ChargeRequest {
     Money amount = 1;
     CreditCardInfo credit_card = 2;
+    PaymentMethod payment_method = 3;
 }
 
 message ChargeResponse {
@@ -211,6 +244,11 @@ message OrderResult {
     Money shipping_cost = 3;
     Address  shipping_address = 4;
     repeated OrderItem items = 5;
+    PaymentMethodType payment_method = 6;
+    DeliveryMethod delivery_method = 7;
+    string carrier = 8;
+    // visa, mastercard, amex, discover; empty for non-card payments
+    string card_network = 9;
 }
 
 message SendOrderConfirmationRequest {
@@ -232,6 +270,8 @@ message PlaceOrderRequest {
     Address address = 3;
     string email = 5;
     CreditCardInfo credit_card = 6;
+    PaymentMethod payment_method = 7;
+    DeliveryMethod delivery_method = 8;
 }
 
 message PlaceOrderResponse {
