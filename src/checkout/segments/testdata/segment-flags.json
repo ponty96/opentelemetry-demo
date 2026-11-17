@@ -1,0 +1,25 @@
+{
+  "$schema": "https://flagd.dev/schema/v0/flags.json",
+  "flags": {
+    "visaOnlyFailure": {
+      "state": "ENABLED",
+      "defaultVariant": "off",
+      "variants": { "on": true, "off": false },
+      "targeting": {
+        "if": [{ "==": [{ "var": "card_network" }, "visa"] }, "on", "off"]
+      }
+    },
+    "visaQuarterFailure": {
+      "state": "ENABLED",
+      "defaultVariant": "off",
+      "variants": { "on": true, "off": false },
+      "targeting": {
+        "if": [
+          { "==": [{ "var": "card_network" }, "visa"] },
+          { "fractional": [["on", 25], ["off", 75]] },
+          "off"
+        ]
+      }
+    }
+  }
+}

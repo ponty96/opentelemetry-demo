@@ -59,6 +59,7 @@ import (
 	pb "github.com/open-telemetry/opentelemetry-demo/src/checkout/genproto/oteldemo"
 	"github.com/open-telemetry/opentelemetry-demo/src/checkout/kafka"
 	"github.com/open-telemetry/opentelemetry-demo/src/checkout/money"
+	"github.com/open-telemetry/opentelemetry-demo/src/checkout/segments"
 )
 
 //go:generate go install google.golang.org/protobuf/cmd/protoc-gen-go
@@ -206,7 +207,7 @@ func main() {
 		logger.Error("Failed to set flagd as the provider", slog.Any("error", err))
 	}
 	defer openfeature.Shutdown()
-	openfeature.AddHooks(otelhooks.NewTracesHook())
+	openfeature.AddHooks(otelhooks.NewTracesHook(), segments.Hook{})
 
 	tracer = tp.Tracer("checkout")
 
