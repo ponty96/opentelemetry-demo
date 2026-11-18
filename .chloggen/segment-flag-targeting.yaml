@@ -1,0 +1,11 @@
+change_type: enhancement
+
+component: checkout
+
+note: Copy shopper segment baggage into the OpenFeature evaluation context in checkout, product-catalog and payment, so flags such as `paymentFailure` can target a segment (for example Visa card payers) with flagd config alone.
+
+issues: [11]
+
+subtext: |-
+  The hook uses `user.id` as the targeting key, maps keys to flat names such as `card_network` and `country`, and records the segments on the active span.
+  The new `demo.user_context.*`, `demo.client.platform`, `demo.payment.*` and `demo.shipping.*` attributes are registered in `telemetry-schema/`.
