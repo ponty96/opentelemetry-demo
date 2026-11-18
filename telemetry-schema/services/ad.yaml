@@ -16,3 +16,13 @@ attribute_groups:
       - ref: demo.ad.category
       - ref: session.id
       - ref: enduser.id
+      - ref: user.id
+      - ref: demo.user_context.tier
+      - ref: demo.user_context.country
+      - ref: demo.user_context.region
+      - ref: demo.client.platform
+      - ref: demo.payment.method
+      - ref: demo.payment.card_type
+      - ref: demo.payment.wallet_provider
+      - ref: demo.shipping.delivery_method
+      - ref: demo.shipping.carrier

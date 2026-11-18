@@ -1,0 +1,10 @@
+change_type: enhancement
+
+component: cart
+
+note: Add the shopper segment OpenFeature hook to cart (.NET), ad and recommendation (Java), email (Ruby), shipping (Rust) and load-generator (Python), so their flags can target a segment too.
+
+issues: [4]
+
+subtext: |-
+  Shipping now extracts W3C baggage (TraceContext + Baggage propagators) and evaluates `intlShippingSlowdown` with the segment context.

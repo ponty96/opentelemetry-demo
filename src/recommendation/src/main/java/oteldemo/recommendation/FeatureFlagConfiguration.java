@@ -27,7 +27,7 @@ class FeatureFlagConfiguration {
   Client featureFlagClient(FeatureProvider featureProvider) {
     OpenFeatureAPI api = OpenFeatureAPI.getInstance();
     api.setProvider(featureProvider);
-    api.addHooks(new TracesHook());
+    api.addHooks(new TracesHook(), new SegmentHook());
     return api.getClient();
   }
 }
