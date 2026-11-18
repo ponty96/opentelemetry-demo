@@ -1,0 +1,11 @@
+change_type: enhancement
+
+component: payment
+
+note: Charge by payment method (card, Apple Pay, Google Pay, PayPal, crypto, BNPL) and accept Amex and Discover cards.
+
+issues: [5]
+
+subtext: |-
+  Checkout forwards the order's payment method to payment. Wallets need a `tok_` token, crypto (BTC, ETH, USDC) waits for a simulated confirmation, and BNPL waits for a simulated approval.
+  An unset payment method still takes today's card path. The random `demo.user_context.loyalty_level` attribute is removed, and `demo.payment.transactions` gains a `demo.payment.method` attribute.

@@ -10,7 +10,6 @@ attribute_groups:
     attributes:
       - ref: user_agent.synthetic.type
       - ref: enduser.id
-      - ref: demo.user_context.loyalty_level
       - ref: demo.payment.card_type
       - ref: demo.payment.card_valid
       - ref: demo.payment.card_number
