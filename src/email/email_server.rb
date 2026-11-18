@@ -14,6 +14,7 @@ require "opentelemetry/exporter/otlp"
 require "opentelemetry-exporter-otlp-logs"
 require "opentelemetry-exporter-otlp-metrics"
 require "opentelemetry/instrumentation/sinatra"
+require_relative "segment_hook"
 
 set :port, ENV["EMAIL_PORT"]
 
@@ -27,6 +28,7 @@ end
 
 OpenFeature::SDK.configure do |config|
   config.set_provider(flagd_client)
+  config.hooks << SegmentHook.new
 end
 
 OpenTelemetry::SDK.configure do |c|

@@ -3,11 +3,14 @@
 
 use actix_web::{post, web, HttpResponse, Responder};
 use open_feature::provider::FeatureProvider;
-use open_feature::EvaluationContext;
+use opentelemetry::Context;
 use tracing::{info, warn};
 
 mod quote;
 use quote::create_quote_from_count;
+
+mod segments;
+use segments::evaluation_context;
 
 mod tracking;
 use tracking::create_tracking_id;
@@ -62,9 +65,11 @@ pub async fn ship_order(
         })
         .unwrap_or(false);
 
+    let eval_ctx = evaluation_context(&Context::current());
+
     let slowdown_secs = if is_outside_us {
         flag_provider
-            .resolve_int_value("intlShippingSlowdown", &EvaluationContext::default())
+            .resolve_int_value("intlShippingSlowdown", &eval_ctx)
             .await
             .map(|res| {
                 info!(

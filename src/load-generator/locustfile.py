@@ -41,6 +41,8 @@ from openfeature import api
 from openfeature.contrib.provider.ofrep import OFREPProvider
 from openfeature.contrib.hook.opentelemetry import TracingHook
 
+from segments import SegmentHook
+
 from playwright.async_api import Route, Request
 
 metric_exporter = OTLPMetricExporter(insecure=True)
@@ -94,7 +96,7 @@ logging.info("Instrumentation complete - logs will now include trace context")
 # Initialize Flagd provider
 base_url = f"http://{os.environ.get('FLAGD_HOST', 'localhost')}:{os.environ.get('FLAGD_OFREP_PORT', 8016)}"
 api.set_provider(OFREPProvider(base_url=base_url))
-api.add_hooks([TracingHook()])
+api.add_hooks([TracingHook(), SegmentHook()])
 
 def get_flagd_value(FlagName):
     # Initialize OpenFeature
