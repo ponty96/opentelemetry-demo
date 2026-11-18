@@ -15,6 +15,7 @@ COPY ./src/checkout/genproto/oteldemo/ genproto/oteldemo/
 COPY ./src/checkout/flags/ flags/
 COPY ./src/checkout/kafka/ kafka/
 COPY ./src/checkout/money/ money/
+COPY ./src/checkout/segments/ segments/
 COPY ./src/checkout/main.go main.go
 
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w" -o checkout main.go

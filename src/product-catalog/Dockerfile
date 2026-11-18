@@ -13,6 +13,7 @@ RUN go mod download
 
 COPY ./src/product-catalog/genproto/oteldemo/ genproto/oteldemo/
 COPY ./src/product-catalog/flags/ flags/
+COPY ./src/product-catalog/segments/ segments/
 COPY ./src/product-catalog/main.go main.go
 COPY ./src/product-catalog/opamp.go opamp.go
 

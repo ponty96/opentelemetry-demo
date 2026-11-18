@@ -1,0 +1,11 @@
+# Copyright The OpenTelemetry Authors
+# SPDX-License-Identifier: Apache-2.0
+
+file_format: definition/2
+attributes:
+  - key: demo.client.platform
+    type: string
+    brief: Client platform the shopper uses
+    stability: development
+    note: Set by the frontend or load generator persona and propagated as baggage.
+    examples: ["web", "ios", "android"]

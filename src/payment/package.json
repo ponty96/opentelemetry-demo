@@ -4,7 +4,8 @@
   "repository": "https://github.com/opentelemetry/opentelemetry-demo",
   "main": "index.js",
   "scripts": {
-    "start": "node --require @opentelemetry/auto-instrumentations-node/register index.js"
+    "start": "node --require @opentelemetry/auto-instrumentations-node/register index.js",
+    "test": "NODE_ENV=test node --test --test-force-exit 'test/**/*.test.js'"
   },
   "author": "Jonathan Lui",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "uuid": "14.0.3"
   },
   "devDependencies": {
-    "@opentelemetry/auto-instrumentations-node": "0.82.0"
+    "@opentelemetry/auto-instrumentations-node": "0.82.0",
+    "@opentelemetry/context-async-hooks": "3.1.1"
   }
 }
