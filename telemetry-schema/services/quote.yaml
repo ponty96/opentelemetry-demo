@@ -10,3 +10,5 @@ attribute_groups:
     attributes:
       - ref: demo.shipping.quote.items_count
       - ref: demo.shipping.quote.cost.total
+      - ref: demo.shipping.delivery_method
+      - ref: demo.user_context.country

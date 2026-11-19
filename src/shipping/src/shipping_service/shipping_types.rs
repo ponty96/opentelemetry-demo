@@ -25,6 +25,8 @@ pub struct Address {
 pub struct GetQuoteRequest {
     pub items: Vec<CartItem>,
     pub address: Option<Address>,
+    #[serde(default, alias = "deliveryMethod")]
+    pub delivery_method: Option<String>,
 }
 
 #[derive(Debug, Serialize)]
@@ -49,9 +51,13 @@ pub struct Quote {
 pub struct ShipOrderRequest {
     pub address: Option<Address>,
     pub items: Vec<CartItem>,
+    #[serde(default, alias = "deliveryMethod")]
+    pub delivery_method: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ShipOrderResponse {
     pub tracking_id: String,
+    #[serde(default)]
+    pub carrier: String,
 }
