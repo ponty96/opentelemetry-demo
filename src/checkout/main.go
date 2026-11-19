@@ -415,10 +415,11 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		logger.Info("order confirmation email sent")
 	}
 
-	// send to kafka only if kafka broker address is set
-	if cs.kafkaBrokerSvcAddr != "" {
+	if cs.postProcessorEnabled() {
 		logger.Info("sending to postProcessor")
 		cs.sendToPostProcessor(ctx, orderResult)
+	} else if cs.kafkaBrokerSvcAddr != "" {
+		logger.Warn("kafka producer unavailable, order not sent to postProcessor")
 	}
 
 	resp := &pb.PlaceOrderResponse{Order: orderResult}
@@ -661,6 +662,12 @@ func (cs *checkout) shipOrder(ctx context.Context, address *pb.Address, items []
 	}
 
 	return shipResp.TrackingID, nil
+}
+
+// postProcessorEnabled reports whether orders can be sent to Kafka. The producer
+// is nil when the broker was unreachable at startup.
+func (cs *checkout) postProcessorEnabled() bool {
+	return cs.kafkaBrokerSvcAddr != "" && cs.KafkaProducerClient != nil
 }
 
 func (cs *checkout) sendToPostProcessor(ctx context.Context, result *pb.OrderResult) {
