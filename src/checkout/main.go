@@ -359,7 +359,7 @@ func (cs *checkout) PlaceOrder(ctx context.Context, req *pb.PlaceOrderRequest) (
 		total = money.Must(money.Sum(total, multPrice))
 	}
 
-	txID, err := cs.chargeCard(ctx, total, req.CreditCard)
+	txID, err := cs.chargeCard(ctx, total, req.CreditCard, req.GetPaymentMethod())
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to charge card: %+v", err)
 	}
@@ -571,7 +571,7 @@ func (cs *checkout) convertCurrency(ctx context.Context, from *pb.Money, toCurre
 	return result, err
 }
 
-func (cs *checkout) chargeCard(ctx context.Context, amount *pb.Money, paymentInfo *pb.CreditCardInfo) (string, error) {
+func (cs *checkout) chargeCard(ctx context.Context, amount *pb.Money, paymentInfo *pb.CreditCardInfo, paymentMethod *pb.PaymentMethod) (string, error) {
 	paymentService := cs.paymentSvcClient
 	if flags.PaymentUnreachable.Value(ctx, openfeature.EvaluationContext{}) {
 		badAddress := "badAddress:50051"
@@ -581,8 +581,9 @@ func (cs *checkout) chargeCard(ctx context.Context, amount *pb.Money, paymentInf
 	}
 
 	paymentResp, err := paymentService.Charge(ctx, &pb.ChargeRequest{
-		Amount:     amount,
-		CreditCard: paymentInfo,
+		Amount:        amount,
+		CreditCard:    paymentInfo,
+		PaymentMethod: paymentMethod,
 	})
 	if err != nil {
 		return "", fmt.Errorf("could not charge the card: %+v", err)

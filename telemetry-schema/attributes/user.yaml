@@ -15,12 +15,6 @@ attributes:
     stability: stable
     note: The currency code preferred by the user for pricing and transactions
     examples: ["USD", "EUR", "GBP"]
-  - key: demo.user_context.loyalty_level
-    type: string
-    brief: Customer loyalty level
-    stability: stable
-    note: The loyalty tier or level of the customer making the payment. This can be used to track payment patterns by customer segment.
-    examples: ["gold", "platinum", "silver", "bronze"]
   - key: demo.user_context.tier
     type: string
     brief: Shopper account tier

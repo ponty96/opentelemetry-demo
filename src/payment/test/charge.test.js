@@ -7,10 +7,11 @@ const { AsyncLocalStorageContextManager } = require('@opentelemetry/context-asyn
 const { OpenFeature, InMemoryProvider } = require('@openfeature/server-sdk');
 
 const { segmentsFromBaggage } = require('../segments');
-const { charge } = require('../charge');
+const { charge, paymentMethodName } = require('../charge');
 
 const VISA = '4432801561520454';
 const MASTERCARD = '5555555555554444';
+const AMEX = '378282246310005';
 const nextYear = new Date().getFullYear() + 1;
 
 const card = number => ({
@@ -86,5 +87,48 @@ describe('paymentFailure targeted by segment', () => {
       charge({ amount, creditCard: card(MASTERCARD) })
     );
     assert.ok(res.transactionId);
+  });
+});
+
+describe('charge per payment method', () => {
+  test('defaults to card when the method is unspecified', async () => {
+    assert.equal(paymentMethodName(undefined), 'card');
+    assert.equal(paymentMethodName({ type: 'PAYMENT_METHOD_TYPE_UNSPECIFIED' }), 'card');
+    assert.equal(paymentMethodName({ type: 'PAYMENT_METHOD_TYPE_APPLE_PAY' }), 'apple_pay');
+    assert.equal(paymentMethodName({ type: 6 }), 'bnpl');
+  });
+
+  test('accepts Amex cards', async () => {
+    const res = await charge({ amount, creditCard: card(AMEX) });
+    assert.ok(res.transactionId);
+  });
+
+  test('rejects an expired card', async () => {
+    await assert.rejects(
+      charge({ amount, creditCard: { ...card(MASTERCARD), creditCardExpirationYear: 2000 } }),
+      /expired/
+    );
+  });
+
+  for (const type of ['PAYMENT_METHOD_TYPE_APPLE_PAY', 'PAYMENT_METHOD_TYPE_GOOGLE_PAY', 'PAYMENT_METHOD_TYPE_PAYPAL']) {
+    test(`${type} needs a wallet token`, async () => {
+      const ok = await charge({ amount, paymentMethod: { type, walletToken: 'tok_abc' } });
+      assert.ok(ok.transactionId);
+      await assert.rejects(charge({ amount, paymentMethod: { type } }), /wallet token/);
+    });
+  }
+
+  test('crypto accepts supported assets only', async () => {
+    const ok = await charge({ amount, paymentMethod: { type: 'PAYMENT_METHOD_TYPE_CRYPTO', cryptoAsset: 'eth' } });
+    assert.ok(ok.transactionId);
+    await assert.rejects(
+      charge({ amount, paymentMethod: { type: 'PAYMENT_METHOD_TYPE_CRYPTO', cryptoAsset: 'DOGE' } }),
+      /Unsupported crypto asset/
+    );
+  });
+
+  test('bnpl is approved', async () => {
+    const ok = await charge({ amount, paymentMethod: { type: 'PAYMENT_METHOD_TYPE_BNPL' } });
+    assert.ok(ok.transactionId);
   });
 });
