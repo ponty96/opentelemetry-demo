@@ -6,7 +6,7 @@ use opentelemetry::global;
 use opentelemetry::metrics::Counter;
 use opentelemetry_instrumentation_actix_web::ClientExt;
 use std::sync::LazyLock;
-use std::{collections::HashMap, env};
+use std::env;
 
 use anyhow::{Context, Result};
 use opentelemetry::{trace::get_active_span, KeyValue};
@@ -20,8 +20,12 @@ static ITEMS_SHIPPED_COUNTER: LazyLock<Counter<u64>> = LazyLock::new(|| {
         .build()
 });
 
-pub async fn create_quote_from_count(count: u32) -> Result<Quote, tonic::Status> {
-    let f = match request_quote(count).await {
+pub async fn create_quote_from_count(
+    count: u32,
+    delivery_method: &str,
+    country: &str,
+) -> Result<Quote, tonic::Status> {
+    let f = match request_quote(count, delivery_method, country).await {
         Ok(float) => float,
         Err(err) => {
             let msg = format!("{}", err);
@@ -45,7 +49,11 @@ pub async fn create_quote_from_count(count: u32) -> Result<Quote, tonic::Status>
     }))
 }
 
-async fn request_quote(count: u32) -> Result<f64, anyhow::Error> {
+async fn request_quote(
+    count: u32,
+    delivery_method: &str,
+    country: &str,
+) -> Result<f64, anyhow::Error> {
     let client = awc::Client::new();
     let quote_service_addr: String = format!(
         "{}{}",
@@ -62,8 +70,11 @@ async fn request_quote(count: u32) -> Result<f64, anyhow::Error> {
         "Requesting quote"
     );
 
-    let mut reqbody = HashMap::new();
-    reqbody.insert("numberOfItems", count);
+    let reqbody = serde_json::json!({
+        "numberOfItems": count,
+        "deliveryMethod": delivery_method,
+        "country": country,
+    });
 
     let mut response = client
         .post(quote_service_addr)

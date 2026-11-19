@@ -45,6 +45,36 @@ pub fn evaluation_context(cx: &Context) -> EvaluationContext {
     eval
 }
 
+pub fn delivery_method(raw: Option<&str>) -> &'static str {
+    match raw.map(|m| m.trim().to_lowercase()).as_deref() {
+        Some("express") => "express",
+        Some("same_day") => "same_day",
+        Some("pickup") => "pickup",
+        _ => "standard",
+    }
+}
+
+/// Picks the carrier from delivery method and destination country.
+pub fn carrier(delivery_method: &str, country: &str) -> &'static str {
+    let country = match country.trim().to_uppercase().as_str() {
+        "USA" | "UNITED STATES" | "UNITED STATES OF AMERICA" => "US".to_string(),
+        other => other.to_string(),
+    };
+    match delivery_method {
+        "same_day" | "pickup" => "local_courier",
+        "express" => match country.as_str() {
+            "US" | "CA" => "fedex",
+            _ => "dhl",
+        },
+        _ => match country.as_str() {
+            "US" | "" => "usps",
+            "CA" => "ups",
+            "BR" | "JP" | "IN" => "fedex",
+            _ => "dhl",
+        },
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -77,5 +107,25 @@ mod tests {
         let eval = evaluation_context(&Context::new());
         assert!(eval.targeting_key.is_none());
         assert!(eval.custom_fields.is_empty());
+    }
+
+    #[test]
+    fn carrier_by_method_and_country() {
+        assert_eq!(carrier("standard", "US"), "usps");
+        assert_eq!(carrier("standard", "United States"), "usps");
+        assert_eq!(carrier("standard", "CA"), "ups");
+        assert_eq!(carrier("standard", "DE"), "dhl");
+        assert_eq!(carrier("standard", "JP"), "fedex");
+        assert_eq!(carrier("express", "us"), "fedex");
+        assert_eq!(carrier("express", "GB"), "dhl");
+        assert_eq!(carrier("same_day", "NG"), "local_courier");
+        assert_eq!(carrier("pickup", "BR"), "local_courier");
+    }
+
+    #[test]
+    fn unknown_delivery_method_is_standard() {
+        assert_eq!(delivery_method(None), "standard");
+        assert_eq!(delivery_method(Some("teleport")), "standard");
+        assert_eq!(delivery_method(Some("EXPRESS")), "express");
     }
 }

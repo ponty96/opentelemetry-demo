@@ -1,0 +1,11 @@
+change_type: enhancement
+
+component: shipping
+
+note: Price shipping by delivery method and destination country, pick a carrier per order, and record payment method, delivery method, carrier and card network on the order.
+
+issues: [6]
+
+subtext: |-
+  Checkout forwards `delivery_method` to shipping's `/get-quote` and `/ship-order`, shipping returns the carrier (usps, ups, fedex, dhl, local_courier), and quote multiplies the per-item price by method and country.
+  Requests without a delivery method keep today's flat price.
