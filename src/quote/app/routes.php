@@ -4,6 +4,7 @@
 
 
 
+use App\Application\ShippingRates;
 use OpenTelemetry\API\Globals;
 use OpenTelemetry\API\Trace\Span;
 use OpenTelemetry\API\Trace\SpanKind;
@@ -26,10 +27,13 @@ function calculateQuote($jsonObject): float
             throw new \InvalidArgumentException('numberOfItems not provided');
         }
         $numberOfItems = intval($jsonObject['numberOfItems']);
-        $costPerItem = 8.99;
-        $quote = round($costPerItem * $numberOfItems, 2);
+        $deliveryMethod = ShippingRates::deliveryMethod($jsonObject['deliveryMethod'] ?? null);
+        $country = strtoupper((string) ($jsonObject['country'] ?? ''));
+        $quote = ShippingRates::quote($numberOfItems, $deliveryMethod, $country);
 
         $childSpan->setAttribute('demo.shipping.quote.items_count', $numberOfItems);
+        $childSpan->setAttribute('demo.shipping.delivery_method', $deliveryMethod);
+        $childSpan->setAttribute('demo.user_context.country', $country);
         $childSpan->setAttribute('demo.shipping.quote.cost.total', $quote);
 
         $childSpan->addEvent('Quote calculated, returning its value');
@@ -39,7 +43,7 @@ function calculateQuote($jsonObject): float
         $counter ??= Globals::meterProvider()
             ->getMeter('quotes')
             ->createCounter('quotes', 'quotes', 'number of quotes calculated');
-        $counter->add(1, ['number_of_items' => $numberOfItems]);
+        $counter->add(1, ['number_of_items' => $numberOfItems, 'demo.shipping.delivery_method' => $deliveryMethod]);
     } catch (\Exception $exception) {
         $childSpan->recordException($exception);
     } finally {

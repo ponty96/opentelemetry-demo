@@ -4,6 +4,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net"
@@ -71,6 +72,45 @@ func TestPostProcessorNeedsAProducer(t *testing.T) {
 		if got := tc.cs.postProcessorEnabled(); got != tc.want {
 			t.Errorf("%s: postProcessorEnabled() = %v, want %v", tc.name, got, tc.want)
 		}
+	}
+}
+
+func TestShippingCallsCarryDeliveryMethod(t *testing.T) {
+	var bodies []map[string]any
+	client := &http.Client{
+		Transport: roundTripperFunc(func(req *http.Request) (*http.Response, error) {
+			var body map[string]any
+			if err := json.NewDecoder(req.Body).Decode(&body); err != nil {
+				return nil, err
+			}
+			bodies = append(bodies, body)
+			resp := `{"tracking_id":"abc","carrier":"dhl"}`
+			if strings.HasSuffix(req.URL.Path, "/get-quote") {
+				resp = `{"cost_usd":{"currency_code":"USD","units":12}}`
+			}
+			return &http.Response{
+				StatusCode: http.StatusOK,
+				Body:       io.NopCloser(strings.NewReader(resp)),
+				Header:     make(http.Header),
+				Request:    req,
+			}, nil
+		}),
+	}
+	cs := &checkout{shippingSvcAddr: "http://shipping.test", httpClient: client}
+	address := &pb.Address{Country: "DE"}
+
+	if _, err := cs.quoteShipping(context.Background(), address, nil, pb.DeliveryMethod_DELIVERY_METHOD_EXPRESS); err != nil {
+		t.Fatalf("quoteShipping() error = %v", err)
+	}
+	trackingID, carrier, err := cs.shipOrder(context.Background(), address, nil, pb.DeliveryMethod_DELIVERY_METHOD_UNSPECIFIED)
+	if err != nil {
+		t.Fatalf("shipOrder() error = %v", err)
+	}
+	if trackingID != "abc" || carrier != "dhl" {
+		t.Fatalf("shipOrder() = %q, %q; want abc, dhl", trackingID, carrier)
+	}
+	if bodies[0]["delivery_method"] != "express" || bodies[1]["delivery_method"] != "standard" {
+		t.Fatalf("delivery_method not forwarded: %v", bodies)
 	}
 }
 
