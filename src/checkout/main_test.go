@@ -59,6 +59,22 @@ func TestSendOrderConfirmationHasBoundedTimeout(t *testing.T) {
 	}
 }
 
+func TestPostProcessorNeedsAProducer(t *testing.T) {
+	cases := []struct {
+		name string
+		cs   *checkout
+		want bool
+	}{
+		{"no broker configured", &checkout{}, false},
+		{"broker configured but producer failed to start", &checkout{kafkaBrokerSvcAddr: "kafka:9092"}, false},
+	}
+	for _, tc := range cases {
+		if got := tc.cs.postProcessorEnabled(); got != tc.want {
+			t.Errorf("%s: postProcessorEnabled() = %v, want %v", tc.name, got, tc.want)
+		}
+	}
+}
+
 func TestShippingCallsCarryDeliveryMethod(t *testing.T) {
 	var bodies []map[string]any
 	client := &http.Client{

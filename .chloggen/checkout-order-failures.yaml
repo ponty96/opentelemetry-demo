@@ -1,0 +1,11 @@
+change_type: bug_fix
+
+component: checkout
+
+note: Fix orders failing when the checkout request has no payment or delivery method, and checkout panicking on every order when Kafka was unreachable at startup.
+
+issues: [15]
+
+subtext: |-
+  The frontend's /api/checkout normalises the body with `PlaceOrderRequest.fromPartial` before encoding it.
+  Checkout skips the Kafka post-processor (with a warning) when its producer failed to start.

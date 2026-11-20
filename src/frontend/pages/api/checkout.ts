@@ -25,7 +25,7 @@ const handler = async ({ method, body, query }: NextApiRequest, res: NextApiResp
 
       let placeOrderResponse: PlaceOrderResponse;
       try {
-        placeOrderResponse = await CheckoutGateway.placeOrder(orderData);
+        placeOrderResponse = await CheckoutGateway.placeOrder(PlaceOrderRequest.fromPartial(orderData));
       } catch (error) {
         const span = trace.getSpan(context.active());
         span?.recordException(error as Exception);
