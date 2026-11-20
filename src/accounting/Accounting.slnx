@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Accounting.csproj" />
+  <Project Path="tests/Accounting.Tests.csproj" />
 </Solution>

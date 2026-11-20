@@ -1,0 +1,10 @@
+change_type: enhancement
+
+component: accounting
+
+note: Store payment method, card network, delivery method, carrier and country on each accounting order, so affected orders can be counted per segment in SQL.
+
+issues: [7]
+
+subtext: |-
+  Existing databases need `ALTER TABLE accounting."order" ADD COLUMN ...` for the five columns, because init.sql only runs on a fresh volume.
