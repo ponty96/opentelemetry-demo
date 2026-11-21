@@ -31,4 +31,9 @@
 	  <Folder Include="src\protos\" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Compile Remove="tests\**" />
+		<InternalsVisibleTo Include="Accounting.Tests" />
+	</ItemGroup>
+
 </Project>

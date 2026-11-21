@@ -3,6 +3,7 @@
 
 using System.Collections;
 using System.Text.RegularExpressions;
+using Oteldemo;
 
 namespace Accounting
 {
@@ -15,6 +16,19 @@ namespace Accounting
         // https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/d4ee69cb4e30d42caf83a1a33962879643157156/src/OpenTelemetry.AutoInstrumentation.Native/regex_utils.cpp#L247
         [GeneratedRegex(@"(?:^|_)(API|TOKEN|SECRET|KEY|PASSWORD|PASS|PWD|HEADERS?|CREDENTIALS)(?:_|=|$)", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)]
         private static partial Regex SecretsPattern();
+
+        public static OrderEntity ToOrderEntity(this OrderResult order) => new()
+        {
+            Id = order.OrderId,
+            PaymentMethod = order.PaymentMethod == PaymentMethodType.Unspecified ? "card" : order.PaymentMethod.ToSnakeCase(),
+            CardNetwork = string.IsNullOrEmpty(order.CardNetwork) ? null : order.CardNetwork,
+            DeliveryMethod = order.DeliveryMethod == Oteldemo.DeliveryMethod.Unspecified ? "standard" : order.DeliveryMethod.ToSnakeCase(),
+            Carrier = string.IsNullOrEmpty(order.Carrier) ? null : order.Carrier,
+            Country = order.ShippingAddress?.Country,
+        };
+
+        public static string ToSnakeCase(this Enum value) =>
+            string.Concat(value.ToString().Select((c, i) => i > 0 && char.IsUpper(c) ? "_" + char.ToLowerInvariant(c) : char.ToLowerInvariant(c).ToString()));
 
         public static IEnumerable<DictionaryEntry> FilterRelevant(this IDictionary envs)
         {

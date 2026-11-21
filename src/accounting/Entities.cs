@@ -56,4 +56,13 @@ internal class OrderEntity
     [Column("order_id")]
     public required string Id { get; set; }
 
+    public string? PaymentMethod { get; set; }
+
+    public string? CardNetwork { get; set; }
+
+    public string? DeliveryMethod { get; set; }
+
+    public string? Carrier { get; set; }
+
+    public string? Country { get; set; }
 }

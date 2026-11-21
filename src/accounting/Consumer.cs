@@ -93,10 +93,7 @@ internal class Consumer : BackgroundService
             }
 
             using var dbContext = new DBContext();
-            var orderEntity = new OrderEntity
-            {
-                Id = order.OrderId
-            };
+            var orderEntity = order.ToOrderEntity();
             dbContext.Add(orderEntity);
             foreach (var item in order.Items)
             {

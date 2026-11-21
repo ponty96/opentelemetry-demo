@@ -26,7 +26,12 @@ GRANT USAGE ON SCHEMA accounting TO astronomy_user;
 
 -- Accounting Service: create tables
 CREATE TABLE accounting."order" (
-    order_id TEXT PRIMARY KEY
+    order_id TEXT PRIMARY KEY,
+    payment_method TEXT,
+    card_network TEXT,
+    delivery_method TEXT,
+    carrier TEXT,
+    country TEXT
 );
 
 CREATE TABLE accounting.shipping (
