@@ -9,6 +9,7 @@ import CartProvider from '../providers/Cart.provider';
 import { ThemeProvider } from 'styled-components';
 import Theme from '../styles/Theme';
 import FrontendTracer from '../utils/telemetry/FrontendTracer';
+import { regionOf } from '../utils/Segments';
 import SessionGateway from '../gateways/Session.gateway';
 import { OpenFeatureProvider, OpenFeature } from '@openfeature/react-sdk';
 import { FlagdWebProvider } from '@openfeature/flagd-web-provider';
@@ -27,10 +28,17 @@ declare global {
 if (typeof window !== 'undefined') {
   FrontendTracer();
   if (window.location) {
-    const session = SessionGateway.getSession();
+    const { segment, ...session } = SessionGateway.getSession();
 
     // Set context prior to provider init to avoid multiple http calls
-    OpenFeature.setContext({ targetingKey: session.userId, ...session }).then(() => {
+    OpenFeature.setContext({
+      targetingKey: session.userId,
+      ...session,
+      user_tier: segment.tier,
+      country: segment.country,
+      region: regionOf(segment.country),
+      platform: 'web',
+    }).then(() => {
       /**
        * We connect to flagd through the envoy proxy, straight from the browser,
        * for this we need to know the current hostname and port.

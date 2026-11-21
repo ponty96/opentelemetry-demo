@@ -17,6 +17,12 @@ export const Title = styled.h1`
   margin-bottom: 24px;
 `;
 
+export const Hint = styled.p`
+  margin: -12px 0 24px;
+  font-size: ${({ theme }) => theme.sizes.dSmall};
+  color: ${({ theme }) => theme.colors.textGray};
+`;
+
 export const CardRow = styled.div`
   display: grid;
   grid-template-columns: 35% 35% 20%;
