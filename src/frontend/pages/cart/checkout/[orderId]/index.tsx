@@ -15,10 +15,23 @@ import AdProvider from '../../../../providers/Ad.provider';
 import { Money } from '../../../../protos/demo';
 import * as S from '../../../../styles/Checkout.styled';
 import { IProductCheckout } from '../../../../types/Cart';
+import { CypressFields } from '../../../../utils/enums/CypressFields';
+import { DELIVERY_METHODS, PAYMENT_METHODS } from '../../../../utils/Segments';
 
 const Checkout: NextPage = () => {
   const { query } = useRouter();
-  const { orderId, items = [], shippingAddress, shippingCost = { units: 0, currencyCode: 'USD', nanos: 0 } } = JSON.parse((query.order || '{}') as string) as IProductCheckout;
+  const {
+    orderId,
+    items = [],
+    shippingAddress,
+    shippingCost = { units: 0, currencyCode: 'USD', nanos: 0 },
+    paymentMethod,
+    deliveryMethod,
+    carrier,
+    cardNetwork,
+  } = JSON.parse((query.order || '{}') as string) as IProductCheckout;
+  const paymentLabel = PAYMENT_METHODS.find(({ type }) => type === paymentMethod)?.label || 'Card';
+  const deliveryLabel = DELIVERY_METHODS.find(({ type }) => type === deliveryMethod)?.label || 'Standard';
 
   const orderTotal = useMemo<Money>(() => {
     const itemsTotal = items.reduce((acc, { item, cost = { units: 0, nanos: 0, currencyCode: 'USD' } }) => {
@@ -64,6 +77,17 @@ const Checkout: NextPage = () => {
               <S.AddressText>{shippingAddress.streetAddress}</S.AddressText>
               <S.AddressText>{shippingAddress.city}, {shippingAddress.state} {shippingAddress.zipCode}</S.AddressText>
               <S.AddressText>{shippingAddress.country}</S.AddressText>
+              <S.SectionTitle>Payment and Delivery</S.SectionTitle>
+              <div data-cy={CypressFields.CheckoutOrderSegments}>
+                <S.AddressText>
+                  {paymentLabel}
+                  {cardNetwork ? ` (${cardNetwork})` : ''}
+                </S.AddressText>
+                <S.AddressText>
+                  {deliveryLabel}
+                  {carrier ? ` via ${carrier.replace('_', ' ').toUpperCase()}` : ''}
+                </S.AddressText>
+              </div>
             </S.RightColumn>
 
             <S.ItemsSection>

@@ -2,8 +2,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import Link from 'next/link';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { CypressFields } from '../../utils/enums/CypressFields';
+import {
+  cardNetwork,
+  carrier,
+  COUNTRIES,
+  CRYPTO_ASSETS,
+  DELIVERY_METHODS,
+  ISegment,
+  PAYMENT_METHODS,
+  TDeliveryMethod,
+  TPaymentMethod,
+} from '../../utils/Segments';
 import Input from '../Input';
 import * as S from './CheckoutForm.styled';
 
@@ -21,13 +32,18 @@ export interface IFormData {
   creditCardCvv: number;
   creditCardExpirationYear: number;
   creditCardExpirationMonth: number;
+  paymentMethod: TPaymentMethod;
+  cryptoAsset: string;
+  deliveryMethod: TDeliveryMethod;
 }
 
 interface IProps {
+  initialSegment: ISegment;
   onSubmit(formData: IFormData): void;
+  onSegmentChange?(segment: Partial<ISegment>): void;
 }
 
-const CheckoutForm = ({ onSubmit }: IProps) => {
+const CheckoutForm = ({ initialSegment, onSubmit, onSegmentChange }: IProps) => {
   const [
     {
       email,
@@ -40,6 +56,9 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
       creditCardExpirationMonth,
       creditCardExpirationYear,
       creditCardNumber,
+      paymentMethod,
+      cryptoAsset,
+      deliveryMethod,
     },
     setFormData,
   ] = useState<IFormData>({
@@ -47,13 +66,23 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
     streetAddress: '1600 Amphitheatre Parkway',
     city: 'Mountain View',
     state: 'CA',
-    country: 'United States',
+    country: initialSegment.country,
     zipCode: "94043",
     creditCardNumber: '4432-8015-6152-0454',
     creditCardCvv: 672,
     creditCardExpirationYear: 2030,
     creditCardExpirationMonth: 1,
+    paymentMethod: initialSegment.paymentMethod,
+    cryptoAsset: CRYPTO_ASSETS[0],
+    deliveryMethod: initialSegment.deliveryMethod,
   });
+
+  const network = cardNetwork(creditCardNumber);
+  const isCard = paymentMethod === 'card';
+
+  useEffect(() => {
+    onSegmentChange?.({ country, paymentMethod, deliveryMethod, ...(network && { cardNetwork: network }) });
+  }, [country, paymentMethod, deliveryMethod, network, onSegmentChange]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData(formData => ({
@@ -77,6 +106,9 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
           creditCardExpirationMonth,
           creditCardExpirationYear,
           creditCardNumber,
+          paymentMethod,
+          cryptoAsset,
+          deliveryMethod,
         });
       }}
     >
@@ -115,20 +147,84 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
         <Input label="State" type="text" name="state" id="state" value={state} required onChange={handleChange} />
         <Input
           label="Country"
-          type="text"
+          type="select"
           id="country"
-          placeholder="Country Name"
           name="country"
+          data-cy={CypressFields.CheckoutCountry}
           value={country}
           onChange={handleChange}
           required
-        />
+        >
+          {COUNTRIES.map(({ code, name }) => (
+            <option value={code} key={code}>
+              {name}
+            </option>
+          ))}
+        </Input>
       </S.StateRow>
+
+      <Input
+        label="Delivery Method"
+        type="select"
+        id="delivery_method"
+        name="deliveryMethod"
+        data-cy={CypressFields.CheckoutDeliveryMethod}
+        value={deliveryMethod}
+        onChange={handleChange}
+      >
+        {DELIVERY_METHODS.map(({ value, label }) => (
+          <option value={value} key={value}>
+            {label}
+          </option>
+        ))}
+      </Input>
+      <S.Hint data-cy={CypressFields.CheckoutCarrier}>Ships with {carrier(deliveryMethod, country).replace('_', ' ').toUpperCase()}</S.Hint>
 
       <div>
         <S.Title>Payment Method</S.Title>
       </div>
 
+      <Input
+        label="Pay With"
+        type="select"
+        id="payment_method"
+        name="paymentMethod"
+        data-cy={CypressFields.CheckoutPaymentMethod}
+        value={paymentMethod}
+        onChange={handleChange}
+      >
+        {PAYMENT_METHODS.map(({ value, label }) => (
+          <option value={value} key={value}>
+            {label}
+          </option>
+        ))}
+      </Input>
+
+      {paymentMethod === 'crypto' && (
+        <Input
+          label="Crypto Asset"
+          type="select"
+          id="crypto_asset"
+          name="cryptoAsset"
+          value={cryptoAsset}
+          onChange={handleChange}
+        >
+          {CRYPTO_ASSETS.map(asset => (
+            <option value={asset} key={asset}>
+              {asset}
+            </option>
+          ))}
+        </Input>
+      )}
+
+      {!isCard && paymentMethod !== 'crypto' && (
+        <S.Hint>
+          You will confirm the payment with {PAYMENT_METHODS.find(({ value }) => value === paymentMethod)?.label} when you place the order.
+        </S.Hint>
+      )}
+
+      {isCard && (
+      <>
       <Input
         type="text"
         label="Credit Card Number"
@@ -188,6 +284,9 @@ const CheckoutForm = ({ onSubmit }: IProps) => {
           onChange={handleChange}
         />
       </S.CardRow>
+      {network && <S.Hint data-cy={CypressFields.CheckoutCardNetwork}>Card network: {network}</S.Hint>}
+      </>
+      )}
 
       <S.SubmitContainer>
         <Link href="/">

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { Ad, Address, Cart, CartItem, Money, PlaceOrderRequest, Product } from '../protos/demo';
+import { segmentBaggage, TDeliveryMethod } from '../utils/Segments';
 import { IProductCart, IProductCartItem, IProductCheckout } from '../types/Cart';
 import request from '../utils/Request';
 import { AttributeNames } from '../utils/enums/AttributeNames';
@@ -41,13 +42,19 @@ const Apis = () => ({
     });
   },
 
-  getShippingCost(itemList: IProductCartItem[], currencyCode: string, address: Address) {
+  getShippingCost(
+    itemList: IProductCartItem[],
+    currencyCode: string,
+    address: Address,
+    deliveryMethod: TDeliveryMethod = 'standard'
+  ) {
     return request<Money>({
       url: `${basePath}/shipping`,
       queryParams: {
         itemList: JSON.stringify(itemList.map(({ productId, quantity }) => ({ productId, quantity }))),
         currencyCode,
         address: JSON.stringify(address),
+        deliveryMethod,
       },
     });
   },
@@ -106,10 +113,13 @@ const ApiGateway = new Proxy(Apis(), {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return function (...args: any[]) {
-      const baggage = propagation.getActiveBaggage() || propagation.createBaggage();
-      const newBaggage = baggage
+      const { segment } = SessionGateway.getSession();
+      let newBaggage = (propagation.getActiveBaggage() || propagation.createBaggage())
         .setEntry(AttributeNames.SESSION_ID, { value: userId })
         .setEntry(AttributeNames.ENDUSER_ID, { value: userId });
+      for (const [key, value] of Object.entries(segmentBaggage(userId, segment))) {
+        newBaggage = newBaggage.setEntry(key, { value });
+      }
       const newContext = propagation.setBaggage(context.active(), newBaggage);
       return context.with(newContext, () => {
         return Reflect.apply(originalFunction, undefined, args);

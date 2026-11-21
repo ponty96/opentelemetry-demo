@@ -1,0 +1,10 @@
+change_type: enhancement
+
+component: frontend
+
+note: Add country, delivery method and payment method choices to checkout, send the shopper's segments as baggage on every /api call, and show payment method and carrier on the order confirmation.
+
+issues: [8]
+
+subtext: |-
+  The shipping quote updates with the chosen delivery method and country. Wallet payments send a generated `tok_` token and crypto lets the shopper pick BTC, ETH or USDC.

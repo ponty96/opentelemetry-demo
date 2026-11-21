@@ -11,25 +11,28 @@ import { IProductCartItem } from '../../types/Cart';
 import ProductPrice from '../ProductPrice';
 import CartItem from './CartItem';
 import * as S from './CartItems.styled';
+import { TDeliveryMethod } from '../../utils/Segments';
 
 interface IProps {
   productList: IProductCartItem[];
   shouldShowPrice?: boolean;
+  country?: string;
+  deliveryMethod?: TDeliveryMethod;
 }
 
-const CartItems = ({ productList, shouldShowPrice = true }: IProps) => {
+const CartItems = ({ productList, shouldShowPrice = true, country = 'US', deliveryMethod = 'standard' }: IProps) => {
   const { updateItemQuantity } = useCart();
   const { selectedCurrency } = useCurrency();
   const address: Address = {
     streetAddress: '1600 Amphitheatre Parkway',
     city: 'Mountain View',
     state: 'CA',
-    country: 'United States',
+    country,
     zipCode: '94043',
   };
 
-  const queryKey = ['shipping', productList, selectedCurrency, address];
-  const queryFn = () => ApiGateway.getShippingCost(productList, selectedCurrency, address);
+  const queryKey = ['shipping', productList, selectedCurrency, address, deliveryMethod];
+  const queryFn = () => ApiGateway.getShippingCost(productList, selectedCurrency, address, deliveryMethod);
   const queryOptions: UseQueryOptions<Money, Error> = {
     queryKey,
     queryFn,
